@@ -90,7 +90,7 @@ export default function Catalog() {
               />
               <label 
                 htmlFor={`type-${type}`} 
-                className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-medium"
+                className="text-sm leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-medium"
               >
                 {type}
               </label>
@@ -111,7 +111,7 @@ export default function Catalog() {
               />
               <label 
                 htmlFor={`region-${region}`} 
-                className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-medium"
+                className="text-sm leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-medium"
               >
                 {region}
               </label>
