@@ -11,7 +11,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
 
   const navLinks = [
-    { href: "/", label: "Главная" },
     { href: "/projects", label: "Каталог проектов" },
     { href: "/news", label: "Новости" },
     { href: "/about", label: "О нас" },
@@ -23,34 +22,34 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-primary hover:opacity-90 transition-opacity">
-            <HeartHandshake className="h-7 w-7" />
-            <div className="flex flex-col">
-              <span className="font-serif font-bold text-lg leading-tight tracking-tight">Церковь Помогает</span>
-              <span className="text-[10px] text-muted-foreground uppercase tracking-widest leading-none font-medium">Каталог проектов</span>
+            <HeartHandshake className="h-7 w-7 shrink-0" />
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif font-bold text-lg leading-tight tracking-tight whitespace-nowrap">Церковь Помогает</span>
+              <span className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium whitespace-nowrap hidden sm:inline-block">Каталог проектов</span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={`text-sm font-medium transition-colors hover:text-primary ${
+              <Link key={link.href} href={link.href} className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
                   location === link.href ? "text-primary" : "text-muted-foreground"
                 }`}>
                 {link.label}
               </Link>
             ))}
-            <Link href="/submit" className={`text-sm font-medium transition-colors hover:text-primary ${
+            <Link href="/submit" className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
               location === '/submit' ? "text-primary" : "text-muted-foreground"
             }`}>
               Добавить проект
             </Link>
-            <Button variant="default" size="sm" className="ml-4 rounded-full font-medium" asChild>
+            <Button variant="default" size="sm" className="ml-4 rounded-full font-medium shrink-0 whitespace-nowrap" asChild>
               <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь</Link>
             </Button>
           </nav>
 
           {/* Mobile Nav */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-primary">

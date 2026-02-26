@@ -40,7 +40,7 @@ import { cn } from "@/lib/utils";
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import { PROJECTS, PROJECT_TYPE_HIERARCHY, CATEGORY_HIERARCHY, HELP_TYPE_HIERARCHY, REGIONS } from "@/lib/mock-data";
+import { PROJECTS, PROJECT_TYPE_HIERARCHY, CATEGORY_HIERARCHY, HELP_TYPE_HIERARCHY, REGIONS, EPARCHIES } from "@/lib/mock-data";
 
 // Fix Leaflet's default icon issue
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
@@ -166,7 +166,8 @@ const FiltersContent = ({
   selectedTypes, toggleType,
   selectedCategories, toggleCategory,
   selectedHelpTypes, toggleHelpType,
-  selectedRegions, toggleRegion
+  selectedRegions, toggleRegion,
+  selectedEparchies, toggleEparchy
 }: any) => (
   <div className="space-y-6">
     <FilterPopover 
@@ -201,6 +202,14 @@ const FiltersContent = ({
       searchPlaceholder="Поиск региона..."
       flatItems={REGIONS}
     />
+    <FilterPopover 
+      title="Епархия"
+      selectedItems={selectedEparchies}
+      onToggle={toggleEparchy}
+      placeholder="Выберите епархии"
+      searchPlaceholder="Поиск епархии..."
+      flatItems={EPARCHIES}
+    />
   </div>
 );
 
@@ -208,6 +217,7 @@ export default function Catalog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+  const [selectedEparchies, setSelectedEparchies] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedHelpTypes, setSelectedHelpTypes] = useState<string[]>([]);
   
@@ -222,6 +232,7 @@ export default function Catalog() {
                           project.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesType = selectedTypes.length === 0 || selectedTypes.includes(project.type);
     const matchesRegion = selectedRegions.length === 0 || selectedRegions.includes(project.region);
+    const matchesEparchy = selectedEparchies.length === 0 || ((project as any).eparchy && selectedEparchies.includes((project as any).eparchy));
     
     // Category match: project has at least one of the selected categories (or none selected)
     const matchesCategory = selectedCategories.length === 0 || 
@@ -233,7 +244,7 @@ export default function Catalog() {
     const matchesHelpType = selectedHelpTypes.length === 0 || 
                            ((project as any).helpTypes || []).some((ht: string) => selectedHelpTypes.includes(ht));
 
-    return matchesSearch && matchesType && matchesRegion && matchesCategory && matchesHelpType;
+    return matchesSearch && matchesType && matchesRegion && matchesEparchy && matchesCategory && matchesHelpType;
   });
 
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
@@ -249,6 +260,13 @@ export default function Catalog() {
   const toggleRegion = (region: string) => {
     setSelectedRegions(prev => 
       prev.includes(region) ? prev.filter(r => r !== region) : [...prev, region]
+    );
+    setCurrentPage(1);
+  };
+
+  const toggleEparchy = (eparchy: string) => {
+    setSelectedEparchies(prev => 
+      prev.includes(eparchy) ? prev.filter(e => e !== eparchy) : [...prev, eparchy]
     );
     setCurrentPage(1);
   };
@@ -302,6 +320,7 @@ export default function Catalog() {
                 selectedCategories={selectedCategories} toggleCategory={toggleCategory}
                 selectedHelpTypes={selectedHelpTypes} toggleHelpType={toggleHelpType}
                 selectedRegions={selectedRegions} toggleRegion={toggleRegion}
+                selectedEparchies={selectedEparchies} toggleEparchy={toggleEparchy}
               />
             </SheetContent>
           </Sheet>
