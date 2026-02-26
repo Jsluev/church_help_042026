@@ -14,7 +14,7 @@ export default function DonateProject() {
   
   const [amount, setAmount] = useState<number | "">(1000);
   const [submitted, setSubmitted] = useState(false);
-  const [agree, setAgree] = useState(true);
+  const [agree, setAgree] = useState(false);
   const [news, setNews] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {

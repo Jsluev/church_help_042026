@@ -10,7 +10,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 export default function DonatePlatform() {
   const [amount, setAmount] = useState<number | "">(1000);
   const [submitted, setSubmitted] = useState(false);
-  const [agree, setAgree] = useState(true);
+  const [agree, setAgree] = useState(false);
   const [news, setNews] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
