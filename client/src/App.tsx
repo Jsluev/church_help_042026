@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Layout from "@/components/layout/Layout";
+import 'leaflet/dist/leaflet.css';
 
 // Pages
 import Home from "@/pages/Home";
@@ -12,6 +13,7 @@ import Catalog from "@/pages/Catalog";
 import ProjectSingle from "@/pages/ProjectSingle";
 import NewsList from "@/pages/NewsList";
 import NewsSingle from "@/pages/NewsSingle";
+import SubmitProject from "@/pages/SubmitProject";
 
 function Router() {
   return (
@@ -30,6 +32,9 @@ function Router() {
       </Route>
       <Route path="/news/:id">
         <Layout><NewsSingle /></Layout>
+      </Route>
+      <Route path="/submit">
+        <Layout><SubmitProject /></Layout>
       </Route>
       <Route component={NotFound} />
     </Switch>

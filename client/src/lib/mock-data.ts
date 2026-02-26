@@ -25,36 +25,21 @@ export const REGIONS = [
   "Ростовская область"
 ];
 
-export const NEWS = [
-  {
-    id: "1",
-    projectId: "1",
-    title: "Открытие нового пункта выдачи вещей в центре «Милосердие»",
-    date: "2024-02-15",
-    summary: "В нашем центре открылся новый пункт выдачи теплых вещей для нуждающихся в преддверии зимнего сезона.",
-    content: "Полный текст новости. Мы рады сообщить, что благодаря поддержке благотворителей мы смогли расширить площадь склада и теперь принимаем больше посетителей каждый день. Приглашаем волонтеров для помощи в сортировке.",
-    image: "https://images.unsplash.com/photo-1593113630400-ea4288922497?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    id: "2",
-    projectId: "2",
-    title: "Служба добровольцев провела акцию «Дари радость»",
-    date: "2024-02-10",
-    summary: "Добровольцы посетили подопечных на дому и передали продуктовые наборы.",
-    content: "Более 50 семей получили продуктовую помощь на этой неделе. Спаси Господи всех, кто принял участие в сборе средств!",
-    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    id: "3",
-    projectId: "1",
-    title: "Требуются волонтеры-автомобилисты",
-    date: "2024-02-05",
-    summary: "Острая нехватка добровольцев с личным автотранспортом для развоза горячих обедов.",
-    content: "Если у вас есть машина и 2 часа свободного времени в неделю, присоединяйтесь к нашей команде! Горячее питание критически важно для одиноких пожилых людей.",
-    image: "https://images.unsplash.com/photo-1518398046578-8cca57782e17?q=80&w=2070&auto=format&fit=crop"
-  }
-];
+// Generate 12 news items total (3 original + 9 new) for pagination testing
+export const NEWS = Array.from({ length: 12 }).map((_, i) => ({
+  id: `${i + 1}`,
+  projectId: i % 2 === 0 ? "1" : "2",
+  title: i === 0 ? "Открытие нового пункта выдачи вещей в центре «Милосердие»" : 
+         i === 1 ? "Служба добровольцев провела акцию «Дари радость»" : 
+         i === 2 ? "Требуются волонтеры-автомобилисты" : 
+         `Новость социального служения #${i + 1}`,
+  date: new Date(2024, 1, 15 - i).toISOString().split('T')[0],
+  summary: "Краткое описание события. Волонтеры и организаторы делятся успехами и приглашают новых участников присоединиться к добровольческому движению.",
+  content: "Полный текст новости. Мы рады сообщить, что благодаря поддержке благотворителей мы смогли расширить возможности нашей работы. Приглашаем волонтеров для помощи в наших текущих задачах. В рамках реализации проекта мы продолжаем развивать инфраструктуру помощи. Ежедневный труд волонтеров и сестер милосердия позволяет охватить заботой сотни нуждающихся.",
+  image: `https://picsum.photos/seed/news${i}/800/600`
+}));
 
+// Generate 16 projects total (6 original + 10 new) for pagination and map testing
 export const PROJECTS = [
   {
     id: "1",
@@ -71,9 +56,10 @@ export const PROJECTS = [
     churchAffiliation: "Учрежден Синодальным отделом по благотворительности",
     description: "Центр оказывает комплексную гуманитарную помощь: вещевую, продуктовую. Здесь также можно получить консультацию социального работника, психолога и юриста. Проект существует более 10 лет и поддерживает тысячи людей ежегодно.",
     images: [
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=2070&auto=format&fit=crop"
+      "https://picsum.photos/seed/project1_1/800/600",
+      "https://picsum.photos/seed/project1_2/800/600"
     ],
+    coordinates: [55.746, 37.669] as [number, number]
   },
   {
     id: "2",
@@ -90,8 +76,9 @@ export const PROJECTS = [
     churchAffiliation: "При храме св. Сергия Радонежского",
     description: "Организация регулярного горячего питания, доврачебной медицинской помощи и социального сопровождения для людей, оказавшихся на улице. Работает мобильная бригада («Автобус милосердия»).",
     images: [
-      "https://images.unsplash.com/photo-1518398046578-8cca57782e17?q=80&w=2070&auto=format&fit=crop"
-    ]
+      "https://picsum.photos/seed/project2/800/600"
+    ],
+    coordinates: [55.777, 37.665] as [number, number]
   },
   {
     id: "3",
@@ -108,8 +95,9 @@ export const PROJECTS = [
     churchAffiliation: "Учрежден епархией",
     description: "Православный реабилитационный центр для алко- и наркозависимых. Программа основана на приобщении к церковной жизни, труде и психологической поддержке. Срок реабилитации от 6 месяцев до года.",
     images: [
-      "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop"
-    ]
+      "https://picsum.photos/seed/project3/800/600"
+    ],
+    coordinates: [60.716, 29.980] as [number, number]
   },
   {
     id: "4",
@@ -126,8 +114,9 @@ export const PROJECTS = [
     churchAffiliation: "Учрежден епархией",
     description: "Предоставление временного проживания беременным женщинам и женщинам с младенцами, оказавшимся в трудной жизненной ситуации без поддержки близких. Обучение уходу за ребенком, помощь в оформлении документов и поиске работы.",
     images: [
-      "https://images.unsplash.com/photo-1519340333755-56e9c1d04579?q=80&w=2070&auto=format&fit=crop"
-    ]
+      "https://picsum.photos/seed/project4/800/600"
+    ],
+    coordinates: [56.838, 60.597] as [number, number]
   },
   {
     id: "5",
@@ -144,8 +133,9 @@ export const PROJECTS = [
     churchAffiliation: "Отдел епархии",
     description: "Подготовка потенциальных усыновителей, опекунов, попечителей. Обучение ведут квалифицированные психологи, юристы и священнослужители. Сопровождение приемных семей.",
     images: [
-      "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=2070&auto=format&fit=crop"
-    ]
+      "https://picsum.photos/seed/project5/800/600"
+    ],
+    coordinates: [56.326, 43.998] as [number, number]
   },
   {
     id: "6",
@@ -162,7 +152,28 @@ export const PROJECTS = [
     churchAffiliation: "При храме",
     description: "Дом сестринского ухода за одинокими пожилыми людьми и инвалидами. Круглосуточный уход, духовное окормление, комфортные условия проживания, медицинское наблюдение.",
     images: [
-      "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=2012&auto=format&fit=crop"
-    ]
-  }
+      "https://picsum.photos/seed/project6/800/600"
+    ],
+    coordinates: [47.222, 39.719] as [number, number]
+  },
+  ...Array.from({ length: 10 }).map((_, i) => ({
+    id: `${i + 7}`,
+    name: `Социальный проект помощи #${i + 7}`,
+    type: PROJECT_TYPES[i % PROJECT_TYPES.length],
+    categories: [CATEGORIES[i % CATEGORIES.length]],
+    region: REGIONS[i % REGIONS.length],
+    address: `Тестовый адрес, ул. Примера, д. ${i + 1}`,
+    phone: `+7 (999) 000-${i}${i}-${i}${i}`,
+    email: `contact${i}@example.com`,
+    site: `project${i}.ru`,
+    leader: "Тестовый Руководитель",
+    organization: "Тестовая организация",
+    churchAffiliation: "При храме",
+    description: "Это автоматически сгенерированный тестовый проект для демонстрации работы пагинации и отображения на карте. Здесь может быть описание реального проекта.",
+    images: [
+      `https://picsum.photos/seed/project_extra_${i}/800/600`
+    ],
+    // Randomize coordinates slightly around Moscow for map demonstration
+    coordinates: [55.75 + (Math.random() - 0.5) * 0.1, 37.61 + (Math.random() - 0.5) * 0.1] as [number, number]
+  }))
 ];

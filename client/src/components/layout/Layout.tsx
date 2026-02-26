@@ -38,6 +38,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 {link.label}
               </Link>
             ))}
+            <Link href="/submit" className={`text-sm font-medium transition-colors hover:text-primary ${
+              location === '/submit' ? "text-primary" : "text-muted-foreground"
+            }`}>
+              Добавить проект
+            </Link>
             <Button variant="default" size="sm" className="ml-4 rounded-full font-medium" asChild>
               <Link href="/projects"><Search className="w-4 h-4 mr-2" /> Найти помощь</Link>
             </Button>
@@ -60,6 +65,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       {link.label}
                     </Link>
                   ))}
+                  <Link href="/submit" className={`text-lg font-serif transition-colors ${
+                      location === '/submit' ? "text-primary font-bold" : "text-foreground"
+                    }`}>
+                    Добавить проект
+                  </Link>
                   <div className="mt-4 pt-4 border-t border-border">
                     <Button className="w-full justify-start rounded-full" asChild>
                       <Link href="/projects">Найти проект</Link>

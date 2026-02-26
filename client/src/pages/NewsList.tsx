@@ -1,10 +1,18 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import { Calendar, ArrowRight } from "lucide-react";
 import { NEWS } from "@/lib/mock-data";
+import { Button } from "@/components/ui/button";
 
 export default function NewsList() {
+  const ITEMS_PER_PAGE = 6;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(NEWS.length / ITEMS_PER_PAGE);
+  const currentNews = NEWS.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+
   return (
-    <div className="container mx-auto px-4 py-12 max-w-6xl">
+    <div className="container mx-auto px-4 py-12 max-w-6xl flex flex-col min-h-[calc(100vh-200px)]">
       <div className="mb-12 text-center max-w-2xl mx-auto">
         <h1 className="text-4xl font-serif font-bold mb-4">Новости служения</h1>
         <p className="text-lg text-muted-foreground">
@@ -12,8 +20,8 @@ export default function NewsList() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-        {NEWS.map((news, index) => (
+      <div className="grid md:grid-cols-2 gap-8 lg:gap-12 flex-1">
+        {currentNews.map((news) => (
           <Link key={news.id} href={`/news/${news.id}`} className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border shadow-sm hover:shadow-lg transition-all duration-300">
               <div className="aspect-[16/10] overflow-hidden bg-muted relative">
                 <img 
@@ -42,6 +50,38 @@ export default function NewsList() {
           </Link>
         ))}
       </div>
+
+      {totalPages > 1 && (
+        <div className="mt-12 flex justify-center items-center gap-2">
+          <Button 
+            variant="outline" 
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+          >
+            Назад
+          </Button>
+          <div className="flex gap-1">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <Button
+                key={i}
+                variant={currentPage === i + 1 ? "default" : "outline"}
+                size="icon"
+                onClick={() => setCurrentPage(i + 1)}
+                className="w-10 h-10"
+              >
+                {i + 1}
+              </Button>
+            ))}
+          </div>
+          <Button 
+            variant="outline" 
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+          >
+            Вперед
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
