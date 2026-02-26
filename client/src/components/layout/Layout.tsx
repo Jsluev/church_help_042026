@@ -44,7 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               Добавить проект
             </Link>
             <Button variant="default" size="sm" className="ml-4 rounded-full font-medium" asChild>
-              <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь платформе</Link>
+              <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь</Link>
             </Button>
           </nav>
 
@@ -75,7 +75,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                       <Link href="/projects"><Search className="w-4 h-4 mr-2" /> Найти проект</Link>
                     </Button>
                     <Button className="w-full justify-start rounded-full" variant="default" asChild>
-                      <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь платформе</Link>
+                      <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь</Link>
                     </Button>
                   </div>
                 </nav>
