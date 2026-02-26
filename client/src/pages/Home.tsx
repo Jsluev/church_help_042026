@@ -24,7 +24,7 @@ export default function Home() {
               Социальное служение Церкви
             </span>
             <h1 className="text-4xl lg:text-6xl font-serif font-bold text-foreground leading-tight mb-6">
-              Единая база социальных проектов Церкви
+              Единая база церковных социальных проектов
             </h1>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-2xl">
               Мы собираем и верифицируем информацию о церковных инициативах помощи по всей России, чтобы нуждающиеся могли найти поддержку, а благотворители — надежные проекты.
