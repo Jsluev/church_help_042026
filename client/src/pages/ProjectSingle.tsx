@@ -46,11 +46,11 @@ export default function ProjectSingle() {
             
             <div className="relative z-10">
               <div className="flex flex-wrap gap-2 mb-6">
-                <Badge variant="secondary" className="bg-secondary/10 text-secondary-foreground hover:bg-secondary/20 text-sm font-medium border-0">
+                <Badge className="bg-primary text-white hover:bg-primary/90 text-sm font-medium border-0 px-3 py-1">
                   {project.type}
                 </Badge>
                 {project.categories.map(cat => (
-                  <Badge key={cat} variant="outline" className="bg-white text-sm font-normal text-muted-foreground border-border">
+                  <Badge key={cat} variant="outline" className="bg-white/80 backdrop-blur-sm text-sm font-medium text-slate-700 border-slate-200 shadow-sm px-3 py-1">
                     {cat}
                   </Badge>
                 ))}
