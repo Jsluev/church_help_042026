@@ -16,12 +16,16 @@ import NewsSingle from "@/pages/NewsSingle";
 import SubmitProject from "@/pages/SubmitProject";
 import DonatePlatform from "@/pages/DonatePlatform";
 import DonateProject from "@/pages/DonateProject";
+import About from "@/pages/About";
 
 function Router() {
   return (
     <Switch>
       <Route path="/">
         <Layout><Home /></Layout>
+      </Route>
+      <Route path="/about">
+        <Layout><About /></Layout>
       </Route>
       <Route path="/projects">
         <Layout><Catalog /></Layout>

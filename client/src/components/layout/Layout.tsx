@@ -14,6 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { href: "/", label: "Главная" },
     { href: "/projects", label: "Каталог проектов" },
     { href: "/news", label: "Новости" },
+    { href: "/about", label: "О нас" },
   ];
 
   return (
