@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { 
   Search, Filter, MapPin, Phone, Mail, Globe, 
-  LayoutGrid, Map as MapIcon
+  LayoutGrid, Map as MapIcon, ChevronDown, Check
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -24,10 +24,24 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import { PROJECTS, PROJECT_TYPES, CATEGORIES, REGIONS } from "@/lib/mock-data";
+import { PROJECTS, PROJECT_TYPE_HIERARCHY, CATEGORIES, REGIONS } from "@/lib/mock-data";
 
 // Fix Leaflet's default icon issue
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
@@ -44,6 +58,9 @@ export default function Catalog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+  
+  const [openRegionPopover, setOpenRegionPopover] = useState(false);
+  const [openTypePopover, setOpenTypePopover] = useState(false);
   
   const [viewMode, setViewMode] = useState<"list" | "map">("list");
   
@@ -80,44 +97,138 @@ export default function Catalog() {
     <div className="space-y-8">
       <div>
         <h3 className="font-medium mb-4 pb-2 border-b">Тип проекта</h3>
-        <div className="space-y-3">
-          {PROJECT_TYPES.map(type => (
-            <div key={type} className="flex items-start space-x-3">
-              <Checkbox 
-                id={`type-${type}`} 
-                checked={selectedTypes.includes(type)}
-                onCheckedChange={() => toggleType(type)}
-              />
-              <label 
-                htmlFor={`type-${type}`} 
-                className="text-sm leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-medium"
-              >
+        <Popover open={openTypePopover} onOpenChange={setOpenTypePopover}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={openTypePopover}
+              className="w-full justify-between font-normal text-left h-auto min-h-10 px-3 py-2"
+            >
+              {selectedTypes.length > 0 ? (
+                <span className="truncate">
+                  Выбрано: {selectedTypes.length}
+                </span>
+              ) : (
+                <span className="text-muted-foreground truncate">Выберите типы проектов</span>
+              )}
+              <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-full md:w-[280px] p-0" align="start">
+            <Command>
+              <CommandInput placeholder="Поиск по типу..." className="h-9" />
+              <CommandList className="max-h-[300px] overflow-y-auto">
+                <CommandEmpty>Тип не найден.</CommandEmpty>
+                {PROJECT_TYPE_HIERARCHY.map((group) => (
+                  <CommandGroup key={group.category} heading={group.category}>
+                    {group.items.map((type) => (
+                      <CommandItem
+                        key={type}
+                        value={type}
+                        onSelect={() => {
+                          toggleType(type);
+                        }}
+                      >
+                        <div className={cn(
+                          "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                          selectedTypes.includes(type)
+                            ? "bg-primary text-primary-foreground"
+                            : "opacity-50 [&_svg]:invisible"
+                        )}>
+                          <Check className={cn("h-3 w-3")} />
+                        </div>
+                        <span className="text-sm">{type}</span>
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                ))}
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+        {selectedTypes.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-3">
+            {selectedTypes.map(type => (
+              <Badge key={type} variant="secondary" className="px-2 py-1 text-xs">
                 {type}
-              </label>
-            </div>
-          ))}
-        </div>
+                <button 
+                  className="ml-1 hover:text-destructive focus:outline-none" 
+                  onClick={() => toggleType(type)}
+                >
+                  &times;
+                </button>
+              </Badge>
+            ))}
+          </div>
+        )}
       </div>
 
       <div>
         <h3 className="font-medium mb-4 pb-2 border-b">Регион</h3>
-        <div className="space-y-3">
-          {REGIONS.map(region => (
-            <div key={region} className="flex items-start space-x-3">
-              <Checkbox 
-                id={`region-${region}`} 
-                checked={selectedRegions.includes(region)}
-                onCheckedChange={() => toggleRegion(region)}
-              />
-              <label 
-                htmlFor={`region-${region}`} 
-                className="text-sm leading-none cursor-pointer peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-medium"
-              >
+        <Popover open={openRegionPopover} onOpenChange={setOpenRegionPopover}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={openRegionPopover}
+              className="w-full justify-between font-normal text-left h-auto min-h-10 px-3 py-2"
+            >
+              {selectedRegions.length > 0 ? (
+                <span className="truncate">
+                  Выбрано: {selectedRegions.length}
+                </span>
+              ) : (
+                <span className="text-muted-foreground truncate">Выберите регионы</span>
+              )}
+              <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-full md:w-[280px] p-0" align="start">
+            <Command>
+              <CommandInput placeholder="Поиск региона..." className="h-9" />
+              <CommandList className="max-h-[300px] overflow-y-auto">
+                <CommandEmpty>Регион не найден.</CommandEmpty>
+                <CommandGroup>
+                  {REGIONS.map((region) => (
+                    <CommandItem
+                      key={region}
+                      value={region}
+                      onSelect={() => {
+                        toggleRegion(region);
+                      }}
+                    >
+                      <div className={cn(
+                        "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                        selectedRegions.includes(region)
+                          ? "bg-primary text-primary-foreground"
+                          : "opacity-50 [&_svg]:invisible"
+                      )}>
+                        <Check className={cn("h-3 w-3")} />
+                      </div>
+                      <span className="text-sm">{region}</span>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+        {selectedRegions.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-3">
+            {selectedRegions.map(region => (
+              <Badge key={region} variant="secondary" className="px-2 py-1 text-xs">
                 {region}
-              </label>
-            </div>
-          ))}
-        </div>
+                <button 
+                  className="ml-1 hover:text-destructive focus:outline-none" 
+                  onClick={() => toggleRegion(region)}
+                >
+                  &times;
+                </button>
+              </Badge>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
