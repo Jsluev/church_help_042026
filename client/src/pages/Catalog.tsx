@@ -344,6 +344,7 @@ export default function Catalog() {
               selectedCategories={selectedCategories} toggleCategory={toggleCategory}
               selectedHelpTypes={selectedHelpTypes} toggleHelpType={toggleHelpType}
               selectedRegions={selectedRegions} toggleRegion={toggleRegion}
+              selectedEparchies={selectedEparchies} toggleEparchy={toggleEparchy}
             />
           </div>
         </aside>
