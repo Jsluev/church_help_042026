@@ -43,16 +43,16 @@ export const REGIONS = [
 ];
 
 const FALLBACK_IMAGES = [
-  "/images/volunteer_1.jpg",
-  "/images/volunteer_2.jpg",
-  "/images/volunteer_3.jpg",
-  "/images/food_1.jpg",
-  "/images/food_2.jpg",
-  "/images/food_3.jpg",
-  "/images/elderly_1.jpg",
-  "/images/elderly_2.jpg",
-  "/images/church_1.jpg",
-  "/images/church_2.jpg"
+  "/images/volunteer_1_new.png",
+  "/images/volunteer_2_new.png",
+  "/images/volunteer_3_new.png",
+  "/images/food_1_new.png",
+  "/images/food_2_new.png",
+  "/images/food_3_new.png",
+  "/images/elderly_1_new.png",
+  "/images/elderly_2_new.png",
+  "/images/church_1_new.png",
+  "/images/church_2_new.png"
 ];
 
 // Generate 12 news items total (3 original + 9 new) for pagination testing

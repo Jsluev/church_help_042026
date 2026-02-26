@@ -82,7 +82,7 @@ export default function About() {
             <div className="relative">
               <div className="aspect-square bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg">
                 <img 
-                  src="/images/volunteer_2.jpg" 
+                  src="/images/volunteer_2_new.png" 
                   alt="Волонтеры помогают людям" 
                   className="w-full h-full object-cover"
                 />
