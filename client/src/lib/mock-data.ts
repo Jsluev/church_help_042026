@@ -26,15 +26,16 @@ export const REGIONS = [
 ];
 
 const FALLBACK_IMAGES = [
-  "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1593113630400-ea4288922497?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1518398046578-8cca57782e17?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1519340333755-56e9c1d04579?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=800&auto=format&fit=crop"
+  "/images/volunteer_1.jpg",
+  "/images/volunteer_2.jpg",
+  "/images/volunteer_3.jpg",
+  "/images/food_1.jpg",
+  "/images/food_2.jpg",
+  "/images/food_3.jpg",
+  "/images/elderly_1.jpg",
+  "/images/elderly_2.jpg",
+  "/images/church_1.jpg",
+  "/images/church_2.jpg"
 ];
 
 // Generate 12 news items total (3 original + 9 new) for pagination testing
