@@ -25,7 +25,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <HeartHandshake className="h-7 w-7 shrink-0" />
             <div className="flex items-baseline gap-2">
               <span className="font-serif font-bold text-lg leading-tight tracking-tight whitespace-nowrap">Церковь Помогает</span>
-              <span className="text-[11px] text-muted-foreground uppercase tracking-widest font-medium whitespace-nowrap hidden sm:inline-block">Каталог проектов</span>
             </div>
           </Link>
 

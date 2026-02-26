@@ -82,7 +82,7 @@ function FilterPopover({
             aria-expanded={open}
             className="w-full justify-between font-normal text-left h-auto min-h-10 px-3 py-2"
           >
-            {selectedItems.length > 0 ? (
+            {selectedItems?.length > 0 ? (
               <span className="truncate">
                 Выбрано: {selectedItems.length}
               </span>
@@ -143,7 +143,7 @@ function FilterPopover({
           </Command>
         </PopoverContent>
       </Popover>
-      {selectedItems.length > 0 && (
+      {selectedItems?.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-3">
           {selectedItems.map(item => (
             <Badge key={item} variant="secondary" className="px-2 py-1 text-xs font-normal">
