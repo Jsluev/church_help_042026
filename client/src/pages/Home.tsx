@@ -31,10 +31,10 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="rounded-full text-base px-8 font-medium shadow-md shadow-primary/20" asChild>
-                <Link href="/projects"><Search className="w-5 h-5 mr-2" /> Найти проект помощи</Link>
+                <Link href="/projects"><Search className="w-5 h-5 mr-2" /> Каталог проектов</Link>
               </Button>
               <Button size="lg" variant="outline" className="rounded-full text-base px-8 bg-white" asChild>
-                <a href="#about" className="text-primary hover:text-primary">Подробнее о портале</a>
+                <Link href="/about" className="text-primary hover:text-primary">Подробнее о портале</Link>
               </Button>
             </div>
           </div>
