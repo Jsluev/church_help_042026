@@ -130,8 +130,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {latestNews.map((news) => (
-              <Link key={news.id} href={`/news/${news.id}`}>
-                <a className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border shadow-sm hover:shadow-md transition-all">
+              <Link key={news.id} href={`/news/${news.id}`} className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border shadow-sm hover:shadow-md transition-all">
                   <div className="aspect-[4/3] overflow-hidden bg-muted relative">
                     <img 
                       src={news.image} 
@@ -153,7 +152,6 @@ export default function Home() {
                       Читать далее <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
-                </a>
               </Link>
             ))}
           </div>

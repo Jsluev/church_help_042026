@@ -14,8 +14,7 @@ export default function NewsList() {
 
       <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
         {NEWS.map((news, index) => (
-          <Link key={news.id} href={`/news/${news.id}`}>
-            <a className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border shadow-sm hover:shadow-lg transition-all duration-300">
+          <Link key={news.id} href={`/news/${news.id}`} className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border shadow-sm hover:shadow-lg transition-all duration-300">
               <div className="aspect-[16/10] overflow-hidden bg-muted relative">
                 <img 
                   src={news.image} 
@@ -40,7 +39,6 @@ export default function NewsList() {
                   Читать полностью <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-2" />
                 </div>
               </div>
-            </a>
           </Link>
         ))}
       </div>

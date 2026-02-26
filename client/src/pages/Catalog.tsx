@@ -178,8 +178,8 @@ export default function Catalog() {
                     <MapPin className="w-3 h-3 mr-1" /> {project.region}
                   </div>
                   <CardTitle className="font-serif text-xl leading-tight line-clamp-2">
-                    <Link href={`/projects/${project.id}`}>
-                      <a className="hover:text-primary transition-colors">{project.name}</a>
+                    <Link href={`/projects/${project.id}`} className="hover:text-primary transition-colors">
+                      {project.name}
                     </Link>
                   </CardTitle>
                 </CardHeader>

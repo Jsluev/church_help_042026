@@ -21,27 +21,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/">
-            <a className="flex items-center gap-2 text-primary hover:opacity-90 transition-opacity">
-              <HeartHandshake className="h-7 w-7" />
-              <div className="flex flex-col">
-                <span className="font-serif font-bold text-lg leading-tight tracking-tight">Церковь Помогает</span>
-                <span className="text-[10px] text-muted-foreground uppercase tracking-widest leading-none font-medium">Каталог проектов</span>
-              </div>
-            </a>
+          <Link href="/" className="flex items-center gap-2 text-primary hover:opacity-90 transition-opacity">
+            <HeartHandshake className="h-7 w-7" />
+            <div className="flex flex-col">
+              <span className="font-serif font-bold text-lg leading-tight tracking-tight">Церковь Помогает</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-widest leading-none font-medium">Каталог проектов</span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
-                <a
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    location === link.href ? "text-primary" : "text-muted-foreground"
-                  }`}
-                >
-                  {link.label}
-                </a>
+              <Link key={link.href} href={link.href} className={`text-sm font-medium transition-colors hover:text-primary ${
+                  location === link.href ? "text-primary" : "text-muted-foreground"
+                }`}>
+                {link.label}
               </Link>
             ))}
             <Button variant="default" size="sm" className="ml-4 rounded-full font-medium" asChild>
@@ -60,12 +54,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <nav className="flex flex-col gap-4 mt-8">
                   {navLinks.map((link) => (
-                    <Link key={link.href} href={link.href}>
-                      <a className={`text-lg font-serif transition-colors ${
+                    <Link key={link.href} href={link.href} className={`text-lg font-serif transition-colors ${
                         location === link.href ? "text-primary font-bold" : "text-foreground"
                       }`}>
-                        {link.label}
-                      </a>
+                      {link.label}
                     </Link>
                   ))}
                   <div className="mt-4 pt-4 border-t border-border">
@@ -102,9 +94,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div>
               <h3 className="font-serif font-semibold text-white mb-4">Навигация</h3>
               <ul className="space-y-2 text-sm text-slate-400">
-                <li><Link href="/"><a className="hover:text-secondary transition-colors">Главная</a></Link></li>
-                <li><Link href="/projects"><a className="hover:text-secondary transition-colors">Каталог проектов</a></Link></li>
-                <li><Link href="/news"><a className="hover:text-secondary transition-colors">Новости служения</a></Link></li>
+                <li><Link href="/" className="hover:text-secondary transition-colors">Главная</Link></li>
+                <li><Link href="/projects" className="hover:text-secondary transition-colors">Каталог проектов</Link></li>
+                <li><Link href="/news" className="hover:text-secondary transition-colors">Новости служения</Link></li>
               </ul>
             </div>
 

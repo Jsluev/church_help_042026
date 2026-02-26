@@ -171,8 +171,7 @@ export default function ProjectSingle() {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedNews.map(news => (
-                <Link key={news.id} href={`/news/${news.id}`}>
-                  <a className="group bg-white rounded-xl border p-5 hover:shadow-md transition-shadow flex flex-col h-full">
+                <Link key={news.id} href={`/news/${news.id}`} className="group bg-white rounded-xl border p-5 hover:shadow-md transition-shadow flex flex-col h-full">
                     <time className="text-xs font-semibold text-muted-foreground mb-2 flex items-center">
                       <Calendar className="w-3 h-3 mr-1.5" />
                       {new Date(news.date).toLocaleDateString('ru-RU')}
@@ -186,7 +185,6 @@ export default function ProjectSingle() {
                     <div className="text-primary text-sm font-medium flex items-center mt-auto">
                       Читать <ArrowRight className="ml-1 w-3 h-3 transition-transform group-hover:translate-x-1" />
                     </div>
-                  </a>
                 </Link>
               ))}
             </div>

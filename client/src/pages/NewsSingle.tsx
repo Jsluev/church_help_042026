@@ -46,8 +46,8 @@ export default function NewsSingle() {
               </div>
               <div className="text-left">
                 <div className="text-[10px] text-muted-foreground uppercase font-semibold leading-none tracking-wider mb-1">Проект</div>
-                <Link href={`/projects/${project.id}`}>
-                  <a className="text-sm font-medium hover:text-primary transition-colors">{project.name}</a>
+                <Link href={`/projects/${project.id}`} className="text-sm font-medium hover:text-primary transition-colors">
+                  {project.name}
                 </Link>
               </div>
             </div>
