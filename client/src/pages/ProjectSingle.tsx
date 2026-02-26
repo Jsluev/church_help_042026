@@ -1,6 +1,6 @@
 import { Link, useParams } from "wouter";
 import { 
-  ArrowLeft, MapPin, Phone, Mail, Globe, 
+  ArrowLeft, ArrowRight, MapPin, Phone, Mail, Globe, 
   Building, User, Calendar, ExternalLink, ShieldCheck
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
