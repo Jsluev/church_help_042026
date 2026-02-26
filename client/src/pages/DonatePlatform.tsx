@@ -77,13 +77,13 @@ export default function DonatePlatform() {
               </div>
 
               {/* Presets */}
-              <div className="flex flex-wrap justify-center gap-3 pb-2">
+              <div className="grid grid-cols-4 gap-2 pb-2">
                 {[500, 1500, 3000, 5000].map((preset) => (
                   <Button
                     key={preset}
                     type="button"
                     variant={amount === preset ? "default" : "outline"}
-                    className={`rounded-2xl h-12 px-6 text-base font-medium shadow-none transition-all ${amount !== preset ? 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50' : ''}`}
+                    className={`rounded-2xl h-12 px-2 sm:px-4 text-sm sm:text-base font-medium shadow-none transition-all ${amount !== preset ? 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50' : ''}`}
                     onClick={() => setAmount(preset)}
                   >
                     {preset} ₽
