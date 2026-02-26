@@ -14,6 +14,8 @@ import ProjectSingle from "@/pages/ProjectSingle";
 import NewsList from "@/pages/NewsList";
 import NewsSingle from "@/pages/NewsSingle";
 import SubmitProject from "@/pages/SubmitProject";
+import DonatePlatform from "@/pages/DonatePlatform";
+import DonateProject from "@/pages/DonateProject";
 
 function Router() {
   return (
@@ -35,6 +37,12 @@ function Router() {
       </Route>
       <Route path="/submit">
         <Layout><SubmitProject /></Layout>
+      </Route>
+      <Route path="/donate">
+        <Layout><DonatePlatform /></Layout>
+      </Route>
+      <Route path="/donate/:projectId">
+        <Layout><DonateProject /></Layout>
       </Route>
       <Route component={NotFound} />
     </Switch>

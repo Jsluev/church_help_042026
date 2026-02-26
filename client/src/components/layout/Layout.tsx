@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { HeartHandshake, Menu, MapPin, Search } from "lucide-react";
+import { HeartHandshake, Menu, MapPin, Search, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -44,7 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               Добавить проект
             </Link>
             <Button variant="default" size="sm" className="ml-4 rounded-full font-medium" asChild>
-              <Link href="/projects"><Search className="w-4 h-4 mr-2" /> Найти помощь</Link>
+              <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь платформе</Link>
             </Button>
           </nav>
 
@@ -70,9 +70,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     }`}>
                     Добавить проект
                   </Link>
-                  <div className="mt-4 pt-4 border-t border-border">
-                    <Button className="w-full justify-start rounded-full" asChild>
-                      <Link href="/projects">Найти проект</Link>
+                  <div className="mt-4 pt-4 border-t border-border flex flex-col gap-2">
+                    <Button className="w-full justify-start rounded-full" variant="outline" asChild>
+                      <Link href="/projects"><Search className="w-4 h-4 mr-2" /> Найти проект</Link>
+                    </Button>
+                    <Button className="w-full justify-start rounded-full" variant="default" asChild>
+                      <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь платформе</Link>
                     </Button>
                   </div>
                 </nav>

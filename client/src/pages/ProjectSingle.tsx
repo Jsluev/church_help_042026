@@ -151,8 +151,10 @@ export default function ProjectSingle() {
                 )}
                 
                 <div className="pt-6 border-t">
-                  <Button className="w-full rounded-full shadow-md shadow-primary/20">
-                    Поддержать проект
+                  <Button className="w-full rounded-full shadow-md shadow-primary/20" asChild>
+                    <Link href={`/donate/${project.id}`}>
+                      Поддержать проект
+                    </Link>
                   </Button>
                 </div>
               </div>
