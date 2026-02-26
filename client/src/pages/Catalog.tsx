@@ -6,7 +6,6 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -54,17 +53,163 @@ L.Icon.Default.mergeOptions({
   shadowUrl,
 });
 
+function FilterPopover({
+  title,
+  selectedItems,
+  onToggle,
+  placeholder,
+  searchPlaceholder,
+  groups,
+  flatItems
+}: {
+  title: string;
+  selectedItems: string[];
+  onToggle: (item: string) => void;
+  placeholder: string;
+  searchPlaceholder: string;
+  groups?: { category: string, items: string[] }[];
+  flatItems?: string[];
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <h3 className="font-medium mb-3 pb-2 border-b">{title}</h3>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="w-full justify-between font-normal text-left h-auto min-h-10 px-3 py-2"
+          >
+            {selectedItems.length > 0 ? (
+              <span className="truncate">
+                Выбрано: {selectedItems.length}
+              </span>
+            ) : (
+              <span className="text-muted-foreground truncate">{placeholder}</span>
+            )}
+            <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent side="bottom" align="start" className="w-full md:w-[280px] p-0 z-[100]">
+          <Command>
+            <CommandInput placeholder={searchPlaceholder} className="h-9" />
+            <CommandList className="max-h-[300px] overflow-y-auto">
+              <CommandEmpty>Ничего не найдено.</CommandEmpty>
+              {groups && groups.map((group) => (
+                <CommandGroup key={group.category} heading={group.category}>
+                  {group.items.map((item) => (
+                    <CommandItem
+                      key={item}
+                      value={item}
+                      onSelect={() => onToggle(item)}
+                    >
+                      <div className={cn(
+                        "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                        selectedItems.includes(item)
+                          ? "bg-primary text-primary-foreground"
+                          : "opacity-50 [&_svg]:invisible"
+                      )}>
+                        <Check className={cn("h-3 w-3")} />
+                      </div>
+                      <span className="text-sm">{item}</span>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              ))}
+              {flatItems && (
+                <CommandGroup>
+                  {flatItems.map((item) => (
+                    <CommandItem
+                      key={item}
+                      value={item}
+                      onSelect={() => onToggle(item)}
+                    >
+                      <div className={cn(
+                        "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                        selectedItems.includes(item)
+                          ? "bg-primary text-primary-foreground"
+                          : "opacity-50 [&_svg]:invisible"
+                      )}>
+                        <Check className={cn("h-3 w-3")} />
+                      </div>
+                      <span className="text-sm">{item}</span>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              )}
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
+      {selectedItems.length > 0 && (
+        <div className="flex flex-wrap gap-2 mt-3">
+          {selectedItems.map(item => (
+            <Badge key={item} variant="secondary" className="px-2 py-1 text-xs font-normal">
+              {item}
+              <button 
+                className="ml-1 hover:text-destructive focus:outline-none" 
+                onClick={() => onToggle(item)}
+              >
+                &times;
+              </button>
+            </Badge>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+const FiltersContent = ({
+  selectedTypes, toggleType,
+  selectedCategories, toggleCategory,
+  selectedHelpTypes, toggleHelpType,
+  selectedRegions, toggleRegion
+}: any) => (
+  <div className="space-y-6">
+    <FilterPopover 
+      title="Тип проекта"
+      selectedItems={selectedTypes}
+      onToggle={toggleType}
+      placeholder="Выберите типы проектов"
+      searchPlaceholder="Поиск по типу..."
+      groups={PROJECT_TYPE_HIERARCHY}
+    />
+    <FilterPopover 
+      title="Категории нуждающихся"
+      selectedItems={selectedCategories}
+      onToggle={toggleCategory}
+      placeholder="Выберите категории"
+      searchPlaceholder="Поиск по категории..."
+      groups={CATEGORY_HIERARCHY}
+    />
+    <FilterPopover 
+      title="Виды помощи"
+      selectedItems={selectedHelpTypes}
+      onToggle={toggleHelpType}
+      placeholder="Выберите виды помощи"
+      searchPlaceholder="Поиск по виду помощи..."
+      groups={HELP_TYPE_HIERARCHY}
+    />
+    <FilterPopover 
+      title="Регион"
+      selectedItems={selectedRegions}
+      onToggle={toggleRegion}
+      placeholder="Выберите регионы"
+      searchPlaceholder="Поиск региона..."
+      flatItems={REGIONS}
+    />
+  </div>
+);
+
 export default function Catalog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedHelpTypes, setSelectedHelpTypes] = useState<string[]>([]);
-  
-  const [openRegionPopover, setOpenRegionPopover] = useState(false);
-  const [openTypePopover, setOpenTypePopover] = useState(false);
-  const [openCategoryPopover, setOpenCategoryPopover] = useState(false);
-  const [openHelpTypePopover, setOpenHelpTypePopover] = useState(false);
   
   const [viewMode, setViewMode] = useState<"list" | "map">("list");
   
