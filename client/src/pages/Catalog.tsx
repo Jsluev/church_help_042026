@@ -41,7 +41,7 @@ import { cn } from "@/lib/utils";
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
-import { PROJECTS, PROJECT_TYPE_HIERARCHY, CATEGORIES, REGIONS } from "@/lib/mock-data";
+import { PROJECTS, PROJECT_TYPE_HIERARCHY, CATEGORY_HIERARCHY, HELP_TYPE_HIERARCHY, REGIONS } from "@/lib/mock-data";
 
 // Fix Leaflet's default icon issue
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
@@ -58,9 +58,13 @@ export default function Catalog() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedHelpTypes, setSelectedHelpTypes] = useState<string[]>([]);
   
   const [openRegionPopover, setOpenRegionPopover] = useState(false);
   const [openTypePopover, setOpenTypePopover] = useState(false);
+  const [openCategoryPopover, setOpenCategoryPopover] = useState(false);
+  const [openHelpTypePopover, setOpenHelpTypePopover] = useState(false);
   
   const [viewMode, setViewMode] = useState<"list" | "map">("list");
   
@@ -73,7 +77,18 @@ export default function Catalog() {
                           project.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesType = selectedTypes.length === 0 || selectedTypes.includes(project.type);
     const matchesRegion = selectedRegions.length === 0 || selectedRegions.includes(project.region);
-    return matchesSearch && matchesType && matchesRegion;
+    
+    // Category match: project has at least one of the selected categories (or none selected)
+    const matchesCategory = selectedCategories.length === 0 || 
+                           project.categories.some(cat => selectedCategories.includes(cat));
+                           
+    // Help Type match: project has at least one of the selected help types (or none selected)
+    // Note: mock data doesn't have helpTypes yet, so we default to true if it's missing,
+    // or we'll filter it if it exists. 
+    const matchesHelpType = selectedHelpTypes.length === 0 || 
+                           ((project as any).helpTypes || []).some((ht: string) => selectedHelpTypes.includes(ht));
+
+    return matchesSearch && matchesType && matchesRegion && matchesCategory && matchesHelpType;
   });
 
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
@@ -93,10 +108,24 @@ export default function Catalog() {
     setCurrentPage(1);
   };
 
+  const toggleCategory = (category: string) => {
+    setSelectedCategories(prev => 
+      prev.includes(category) ? prev.filter(c => c !== category) : [...prev, category]
+    );
+    setCurrentPage(1);
+  };
+
+  const toggleHelpType = (helpType: string) => {
+    setSelectedHelpTypes(prev => 
+      prev.includes(helpType) ? prev.filter(h => h !== helpType) : [...prev, helpType]
+    );
+    setCurrentPage(1);
+  };
+
   const FiltersContent = () => (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div>
-        <h3 className="font-medium mb-4 pb-2 border-b">Тип проекта</h3>
+        <h3 className="font-medium mb-3 pb-2 border-b">Тип проекта</h3>
         <Popover open={openTypePopover} onOpenChange={setOpenTypePopover}>
           <PopoverTrigger asChild>
             <Button
@@ -115,7 +144,7 @@ export default function Catalog() {
               <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-full md:w-[280px] p-0" align="start">
+          <PopoverContent side="bottom" align="start" className="w-full md:w-[280px] p-0 z-[100]">
             <Command>
               <CommandInput placeholder="Поиск по типу..." className="h-9" />
               <CommandList className="max-h-[300px] overflow-y-auto">
@@ -150,7 +179,7 @@ export default function Catalog() {
         {selectedTypes.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-3">
             {selectedTypes.map(type => (
-              <Badge key={type} variant="secondary" className="px-2 py-1 text-xs">
+              <Badge key={type} variant="secondary" className="px-2 py-1 text-xs font-normal">
                 {type}
                 <button 
                   className="ml-1 hover:text-destructive focus:outline-none" 
@@ -165,7 +194,145 @@ export default function Catalog() {
       </div>
 
       <div>
-        <h3 className="font-medium mb-4 pb-2 border-b">Регион</h3>
+        <h3 className="font-medium mb-3 pb-2 border-b">Категории нуждающихся</h3>
+        <Popover open={openCategoryPopover} onOpenChange={setOpenCategoryPopover}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={openCategoryPopover}
+              className="w-full justify-between font-normal text-left h-auto min-h-10 px-3 py-2"
+            >
+              {selectedCategories.length > 0 ? (
+                <span className="truncate">
+                  Выбрано: {selectedCategories.length}
+                </span>
+              ) : (
+                <span className="text-muted-foreground truncate">Выберите категории</span>
+              )}
+              <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent side="bottom" align="start" className="w-full md:w-[280px] p-0 z-[100]">
+            <Command>
+              <CommandInput placeholder="Поиск по категории..." className="h-9" />
+              <CommandList className="max-h-[300px] overflow-y-auto">
+                <CommandEmpty>Категория не найдена.</CommandEmpty>
+                {CATEGORY_HIERARCHY.map((group) => (
+                  <CommandGroup key={group.category} heading={group.category}>
+                    {group.items.map((category) => (
+                      <CommandItem
+                        key={category}
+                        value={category}
+                        onSelect={() => {
+                          toggleCategory(category);
+                        }}
+                      >
+                        <div className={cn(
+                          "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                          selectedCategories.includes(category)
+                            ? "bg-primary text-primary-foreground"
+                            : "opacity-50 [&_svg]:invisible"
+                        )}>
+                          <Check className={cn("h-3 w-3")} />
+                        </div>
+                        <span className="text-sm">{category}</span>
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                ))}
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+        {selectedCategories.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-3">
+            {selectedCategories.map(cat => (
+              <Badge key={cat} variant="secondary" className="px-2 py-1 text-xs font-normal">
+                {cat}
+                <button 
+                  className="ml-1 hover:text-destructive focus:outline-none" 
+                  onClick={() => toggleCategory(cat)}
+                >
+                  &times;
+                </button>
+              </Badge>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div>
+        <h3 className="font-medium mb-3 pb-2 border-b">Виды помощи</h3>
+        <Popover open={openHelpTypePopover} onOpenChange={setOpenHelpTypePopover}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={openHelpTypePopover}
+              className="w-full justify-between font-normal text-left h-auto min-h-10 px-3 py-2"
+            >
+              {selectedHelpTypes.length > 0 ? (
+                <span className="truncate">
+                  Выбрано: {selectedHelpTypes.length}
+                </span>
+              ) : (
+                <span className="text-muted-foreground truncate">Выберите виды помощи</span>
+              )}
+              <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent side="bottom" align="start" className="w-full md:w-[280px] p-0 z-[100]">
+            <Command>
+              <CommandInput placeholder="Поиск по виду помощи..." className="h-9" />
+              <CommandList className="max-h-[300px] overflow-y-auto">
+                <CommandEmpty>Вид помощи не найден.</CommandEmpty>
+                {HELP_TYPE_HIERARCHY.map((group) => (
+                  <CommandGroup key={group.category} heading={group.category}>
+                    {group.items.map((helpType) => (
+                      <CommandItem
+                        key={helpType}
+                        value={helpType}
+                        onSelect={() => {
+                          toggleHelpType(helpType);
+                        }}
+                      >
+                        <div className={cn(
+                          "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                          selectedHelpTypes.includes(helpType)
+                            ? "bg-primary text-primary-foreground"
+                            : "opacity-50 [&_svg]:invisible"
+                        )}>
+                          <Check className={cn("h-3 w-3")} />
+                        </div>
+                        <span className="text-sm">{helpType}</span>
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                ))}
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
+        {selectedHelpTypes.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-3">
+            {selectedHelpTypes.map(ht => (
+              <Badge key={ht} variant="secondary" className="px-2 py-1 text-xs font-normal">
+                {ht}
+                <button 
+                  className="ml-1 hover:text-destructive focus:outline-none" 
+                  onClick={() => toggleHelpType(ht)}
+                >
+                  &times;
+                </button>
+              </Badge>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div>
+        <h3 className="font-medium mb-3 pb-2 border-b">Регион</h3>
         <Popover open={openRegionPopover} onOpenChange={setOpenRegionPopover}>
           <PopoverTrigger asChild>
             <Button
@@ -184,7 +351,7 @@ export default function Catalog() {
               <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-full md:w-[280px] p-0" align="start">
+          <PopoverContent side="bottom" align="start" className="w-full md:w-[280px] p-0 z-[100]">
             <Command>
               <CommandInput placeholder="Поиск региона..." className="h-9" />
               <CommandList className="max-h-[300px] overflow-y-auto">
@@ -217,7 +384,7 @@ export default function Catalog() {
         {selectedRegions.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-3">
             {selectedRegions.map(region => (
-              <Badge key={region} variant="secondary" className="px-2 py-1 text-xs">
+              <Badge key={region} variant="secondary" className="px-2 py-1 text-xs font-normal">
                 {region}
                 <button 
                   className="ml-1 hover:text-destructive focus:outline-none" 
