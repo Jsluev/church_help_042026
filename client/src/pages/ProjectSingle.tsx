@@ -1,7 +1,7 @@
 import { Link, useParams } from "wouter";
 import { 
   ArrowLeft, ArrowRight, MapPin, Phone, Mail, Globe, 
-  Building, User, Calendar, ExternalLink, ShieldCheck
+  Building, User, Calendar, ExternalLink, ShieldCheck, Heart
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

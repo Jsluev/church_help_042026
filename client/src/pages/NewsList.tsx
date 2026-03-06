@@ -81,6 +81,7 @@ export default function NewsList() {
               </div>
           </Link>
         ))}
+        </div>
       ) : (
         <div className="text-center py-20 bg-slate-50 rounded-2xl border border-dashed flex-1">
           <p className="text-muted-foreground">В этой рубрике пока нет новостей.</p>

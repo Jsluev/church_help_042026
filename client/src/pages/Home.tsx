@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Search, Heart, Shield, Users, Newspaper } from "lucide-react";
+import { ArrowRight, Search, Heart, Shield, Users, Newspaper, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { NEWS } from "@/lib/mock-data";
