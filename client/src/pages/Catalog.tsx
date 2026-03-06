@@ -377,36 +377,27 @@ export default function Catalog() {
           </div>
 
           {viewMode === "map" ? (
-            <div className="w-full h-[600px] rounded-xl overflow-hidden border bg-slate-50 z-0">
-              <MapContainer 
-                center={[55.751244, 37.618423]} 
-                zoom={5} 
-                style={{ height: '100%', width: '100%', zIndex: 0 }}
-              >
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {filteredProjects.map(project => (
-                  <Marker 
-                    key={project.id} 
-                    position={project.coordinates || [55.75, 37.61]}
+            <div className="w-full h-[600px] rounded-xl overflow-hidden border bg-slate-50 relative">
+              <div className="absolute inset-0 flex items-center justify-center bg-slate-100 z-10">
+                <div className="text-center p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-sm border max-w-md">
+                  <MapIcon className="w-12 h-12 text-primary/40 mx-auto mb-4" />
+                  <h3 className="font-serif text-xl font-bold mb-2">Карта в разработке</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Здесь будет отображаться интерактивная карта с проектами. Ожидается интеграция с API Яндекс.Карт.
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    className="mt-6 w-full"
+                    onClick={() => setViewMode("list")}
                   >
-                    <Popup>
-                      <div className="max-w-[200px]">
-                        <h4 className="font-serif font-bold text-base mb-1">{project.name}</h4>
-                        <div className="text-xs text-muted-foreground mb-2 flex items-center">
-                          <MapPin className="w-3 h-3 mr-1" /> {project.region}
-                        </div>
-                        <p className="text-xs line-clamp-2 mb-3">{project.description}</p>
-                        <Button variant="default" size="sm" className="w-full text-xs h-7" asChild>
-                          <Link href={`/projects/${project.id}`}>Подробнее</Link>
-                        </Button>
-                      </div>
-                    </Popup>
-                  </Marker>
-                ))}
-              </MapContainer>
+                    Вернуться к списку
+                  </Button>
+                </div>
+              </div>
+              {/* Decorative map background */}
+              <div className="w-full h-full opacity-30 pointer-events-none" style={{
+                backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+              }} />
             </div>
           ) : (
             <>

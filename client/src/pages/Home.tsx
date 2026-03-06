@@ -19,104 +19,56 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase mb-6">
-              Социальное служение Церкви
-            </span>
-            <h1 className="text-4xl lg:text-6xl font-serif font-bold text-foreground leading-tight mb-6">
-              Единая база церковных социальных проектов
-            </h1>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-2xl">
-              Мы собираем и верифицируем информацию о церковных инициативах помощи по всей России, чтобы нуждающиеся могли найти поддержку, а благотворители — надежные проекты.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="rounded-full text-base px-8 font-medium shadow-md shadow-primary/20" asChild>
-                <Link href="/projects"><Search className="w-5 h-5 mr-2" /> Каталог проектов</Link>
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full text-base px-8 bg-white" asChild>
-                <Link href="/about" className="text-primary hover:text-primary">Подробнее о портале</Link>
-              </Button>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-3xl">
+              <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase mb-6">
+                Социальное служение Церкви
+              </span>
+              <h1 className="text-4xl lg:text-6xl font-serif font-bold text-foreground leading-tight mb-6">
+                Единая база церковных социальных проектов
+              </h1>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-2xl">
+                Мы собираем и верифицируем информацию о церковных инициативах помощи по всей России, чтобы нуждающиеся могли найти поддержку, а благотворители — надежные проекты.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <Button size="lg" className="rounded-full text-base px-8 font-medium shadow-md shadow-primary/20" asChild>
+                  <Link href="/projects"><Search className="w-5 h-5 mr-2" /> Каталог проектов</Link>
+                </Button>
+                <Button size="lg" variant="outline" className="rounded-full text-base px-8 bg-white" asChild>
+                  <Link href="/about" className="text-primary hover:text-primary">О портале</Link>
+                </Button>
+              </div>
+              
+              <div className="bg-white/60 backdrop-blur-sm p-4 rounded-2xl border shadow-sm inline-flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                  <Shield className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">Координируется Синодальным отделом</div>
+                  <div className="text-xs text-muted-foreground">по церковной благотворительности</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="hidden lg:block relative rounded-2xl overflow-hidden shadow-xl border bg-muted aspect-video">
+              {/* Video Placeholder */}
+              <div className="absolute inset-0 flex items-center justify-center bg-slate-900 group cursor-pointer">
+                <img 
+                  src="/images/ortho_6.png" 
+                  alt="Презентация проекта" 
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
+                />
+                <div className="absolute w-20 h-20 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-12 bg-white border-b">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-border/50">
-            <div className="px-4">
-              <div className="text-3xl md:text-5xl font-serif font-bold text-primary mb-2">4500+</div>
-              <div className="text-sm text-muted-foreground font-medium">Церковных социальных проектов</div>
-            </div>
-            <div className="px-4">
-              <div className="text-3xl md:text-5xl font-serif font-bold text-primary mb-2">80</div>
-              <div className="text-sm text-muted-foreground font-medium">Приютов для беременных</div>
-            </div>
-            <div className="px-4">
-              <div className="text-3xl md:text-5xl font-serif font-bold text-primary mb-2">90</div>
-              <div className="text-sm text-muted-foreground font-medium">Приютов для бездомных</div>
-            </div>
-            <div className="px-4">
-              <div className="text-3xl md:text-5xl font-serif font-bold text-primary mb-2">400+</div>
-              <div className="text-sm text-muted-foreground font-medium">Проектов помощи инвалидам</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features/About Section */}
-      <section id="about" className="py-20 lg:py-28">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl font-serif font-bold mb-4">Для кого этот портал?</h2>
-            <p className="text-muted-foreground">
-              Платформа создана для объединения усилий в делах милосердия и предоставления актуальной, проверенной информации.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-none shadow-md hover:shadow-lg transition-shadow bg-gradient-to-b from-white to-primary/5">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <Search className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="font-serif text-xl">Для нуждающихся</CardTitle>
-                <CardDescription className="text-base mt-2">
-                  Простой и быстрый поиск центров гуманитарной помощи, приютов, бесплатных столовых и консультаций в вашем регионе.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            
-            <Card className="border-none shadow-md hover:shadow-lg transition-shadow bg-gradient-to-b from-white to-secondary/5">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4">
-                  <Heart className="w-6 h-6 text-secondary" />
-                </div>
-                <CardTitle className="font-serif text-xl">Для благотворителей</CardTitle>
-                <CardDescription className="text-base mt-2">
-                  База верифицированных проектов. Вы можете быть уверены, что ваша помощь дойдет до тех, кто в ней действительно нуждается.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-none shadow-md hover:shadow-lg transition-shadow bg-gradient-to-b from-white to-primary/5">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-primary" />
-                </div>
-                <CardTitle className="font-serif text-xl">Для организаторов</CardTitle>
-                <CardDescription className="text-base mt-2">
-                  Возможность рассказать о своем проекте на федеральном уровне, найти волонтеров, обменяться опытом с коллегами.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Latest News */}
-      <section className="py-20 lg:py-28 bg-slate-50 border-t border-border">
+      {/* Latest News (Moved up) */}
+      <section className="py-20 bg-slate-50 border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex items-end justify-between mb-12">
             <div>
@@ -158,6 +110,115 @@ export default function Home() {
           <div className="mt-8 text-center sm:hidden">
             <Button variant="outline" className="w-full" asChild>
               <Link href="/news">Все новости</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-12 bg-white border-b">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-border/50">
+            <div className="px-4">
+              <div className="text-3xl md:text-5xl font-serif font-bold text-primary mb-2">4500+</div>
+              <div className="text-sm text-muted-foreground font-medium">Церковных социальных проектов</div>
+            </div>
+            <div className="px-4">
+              <div className="text-3xl md:text-5xl font-serif font-bold text-primary mb-2">80</div>
+              <div className="text-sm text-muted-foreground font-medium">Приютов для беременных</div>
+            </div>
+            <div className="px-4">
+              <div className="text-3xl md:text-5xl font-serif font-bold text-primary mb-2">90</div>
+              <div className="text-sm text-muted-foreground font-medium">Приютов для бездомных</div>
+            </div>
+            <div className="px-4">
+              <div className="text-3xl md:text-5xl font-serif font-bold text-primary mb-2">400+</div>
+              <div className="text-sm text-muted-foreground font-medium">Проектов помощи инвалидам</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map Infographic Section */}
+      <section className="py-20 lg:py-28 bg-white border-b border-border">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-serif font-bold mb-4">География служения</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Церковные социальные инициативы работают в каждой епархии от Калининграда до Владивостока
+            </p>
+          </div>
+          
+          <div className="relative w-full aspect-[2/1] bg-slate-50 rounded-3xl border overflow-hidden flex items-center justify-center shadow-sm">
+             <div className="absolute inset-0 opacity-10" style={{
+                backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+             }}></div>
+             
+             <div className="text-center z-10 p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-sm border max-w-sm">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
+                  <MapPin className="w-8 h-8" />
+                </div>
+                <h3 className="font-serif font-bold text-xl mb-2">Инфографика в разработке</h3>
+                <p className="text-sm text-muted-foreground mb-6">Здесь будет располагаться визуальная карта проектов по регионам.</p>
+                <Button variant="outline" className="w-full rounded-full" asChild>
+                  <Link href="/projects">Перейти в каталог проектов</Link>
+                </Button>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Platform / Features Section */}
+      <section id="about" className="py-20 lg:py-28">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-serif font-bold mb-4">О проекте</h2>
+            <p className="text-muted-foreground text-lg">
+              Информационный портал создан для систематизации, развития и поддержки церковных социальных инициатив по всей стране.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="border-none shadow-md hover:shadow-lg transition-shadow bg-gradient-to-b from-white to-primary/5">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <Search className="w-6 h-6 text-primary" />
+                </div>
+                <CardTitle className="font-serif text-xl">Единая база</CardTitle>
+                <CardDescription className="text-base mt-2">
+                  Актуальная информация обо всех действующих центрах гуманитарной помощи, приютах и службах милосердия в России.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+            
+            <Card className="border-none shadow-md hover:shadow-lg transition-shadow bg-gradient-to-b from-white to-secondary/5">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-4">
+                  <Shield className="w-6 h-6 text-secondary" />
+                </div>
+                <CardTitle className="font-serif text-xl">Верификация</CardTitle>
+                <CardDescription className="text-base mt-2">
+                  Все проекты проходят проверку. Мы подтверждаем их церковную принадлежность и реальную деятельность.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-none shadow-md hover:shadow-lg transition-shadow bg-gradient-to-b from-white to-primary/5">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-primary" />
+                </div>
+                <CardTitle className="font-serif text-xl">Объединение усилий</CardTitle>
+                <CardDescription className="text-base mt-2">
+                  Платформа помогает нуждающимся найти поддержку, благотворителям — надежные проекты, а организаторам — обменяться опытом.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+          
+          <div className="mt-12 text-center">
+            <Button variant="outline" size="lg" className="rounded-full" asChild>
+              <Link href="/about">Читать подробнее о проекте</Link>
             </Button>
           </div>
         </div>

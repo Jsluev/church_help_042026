@@ -57,12 +57,12 @@ export default function About() {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-serif font-bold mb-6">Наша миссия</h2>
+              <h2 className="text-3xl font-serif font-bold mb-6">О проекте и правилах размещения</h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                Мы стремимся объединить всех, кто нуждается в помощи, с теми, кто готов ее оказать. Платформа делает церковную социальную работу прозрачной, доступной и понятной для каждого человека, независимо от его вероисповедания.
+                Мы стремимся объединить всех, кто нуждается в помощи, с теми, кто готов ее оказать. Платформа делает церковную социальную работу прозрачной, доступной и понятной для каждого человека.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                Любой человек, оказавшийся в трудной жизненной ситуации, может найти здесь поддержку рядом со своим домом, а благотворители — выбрать надежный проект для пожертвований или стать волонтером.
+                В каталог включаются проекты, отвечающие следующим критериям: наличие юридического лица (религиозной организации), учреждение религиозной организацией или действие по письменному благословению архиерея.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -103,45 +103,45 @@ export default function About() {
         </div>
       </section>
 
-      {/* For whom */}
+      {/* History of service */}
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-serif font-bold mb-4">Для кого этот портал?</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Платформа создана для взаимодействия трех ключевых групп участников социального служения
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl font-serif font-bold mb-6">История и современное состояние служения</h2>
+            <p className="text-lg text-slate-600 leading-relaxed mb-6">
+              Церковное социальное служение имеет глубокие исторические корни. С первых веков христианства забота о ближнем, о бедных, больных и заключенных была неотъемлемой частью жизни Церкви.
+            </p>
+            <p className="text-lg text-slate-600 leading-relaxed">
+              Сегодня Русская Православная Церковь реализует тысячи социальных инициатив по всей стране. Это приюты для матерей, центры реабилитации зависимых, сестричества милосердия, проекты помощи бездомным и инвалидам. Тысячи добровольцев ежедневно отдают свои силы, чтобы мир стал немного добрее.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
-                <Users className="w-7 h-7" />
+      {/* About Synodal Department */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="bg-primary/5 rounded-3xl p-10 md:p-16 border border-primary/10">
+            <div className="flex flex-col md:flex-row gap-12 items-center">
+              <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-white flex items-center justify-center shadow-lg border border-slate-100 shrink-0 overflow-hidden">
+                <img src="/images/ortho_5.png" alt="Символ отдела" className="w-full h-full object-cover" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Нуждающимся</h3>
-              <p className="text-slate-600 leading-relaxed">
-                Удобный поиск организаций, приютов и центров гуманитарной помощи в вашем регионе. Возможность быстро найти контакты и получить необходимую поддержку.
-              </p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-6">
-                <MapPin className="w-7 h-7" />
+              <div>
+                <h2 className="text-3xl font-serif font-bold mb-6">О Синодальном отделе</h2>
+                <p className="text-lg text-slate-700 leading-relaxed mb-6">
+                  Синодальный отдел по церковной благотворительности и социальному служению Русской Православной Церкви координирует и поддерживает социальные инициативы на общецерковном уровне.
+                </p>
+                <p className="text-lg text-slate-700 leading-relaxed">
+                  Отдел занимается разработкой методологии, обучением специалистов, распределением гуманитарной помощи при чрезвычайных ситуациях, а также взаимодействием с государственными и общественными организациями для эффективного решения социальных проблем.
+                </p>
+                <div className="mt-8">
+                  <Button asChild>
+                    <a href="https://diaconia.ru" target="_blank" rel="noreferrer">
+                      Официальный сайт Отдела
+                    </a>
+                  </Button>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3">Организациям</h3>
-              <p className="text-slate-600 leading-relaxed">
-                Возможность рассказать о своей деятельности на всю страну, привлечь новых волонтеров и благотворителей, обмениваться опытом с коллегами из других регионов.
-              </p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mb-6">
-                <Heart className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Благотворителям</h3>
-              <p className="text-slate-600 leading-relaxed">
-                Достоверная информация о проверенных социальных проектах Церкви. Вы можете выбрать конкретный проект или направление для пожертвования.
-              </p>
             </div>
           </div>
         </div>

@@ -60,16 +60,16 @@ export default function ProjectSingle() {
                 {project.name}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-6 text-sm text-slate-600 mt-4">
                 {project.organization && (
                   <div className="flex items-center">
-                    <Building className="w-4 h-4 mr-2 text-primary" />
+                    <Building className="w-4 h-4 mr-2 opacity-70" />
                     {project.organization}
                   </div>
                 )}
                 {project.churchAffiliation && (
-                  <div className="flex items-center text-amber-700 font-medium">
-                    <ShieldCheck className="w-4 h-4 mr-1.5" />
+                  <div className="flex items-center">
+                    <ShieldCheck className="w-4 h-4 mr-1.5 opacity-70" />
                     {project.churchAffiliation}
                   </div>
                 )}
@@ -135,6 +135,12 @@ export default function ProjectSingle() {
                         </a>
                       </li>
                     )}
+                    <li className="flex items-center pt-2">
+                      <Heart className="w-5 h-5 mr-3 text-primary shrink-0" />
+                      <a href={`/donate/${project.id}`} className="text-sm font-semibold text-primary hover:underline flex items-center">
+                        Как помочь проекту <ArrowRight className="w-3 h-3 ml-1" />
+                      </a>
+                    </li>
                   </ul>
                 </div>
 
@@ -150,10 +156,13 @@ export default function ProjectSingle() {
                   </div>
                 )}
                 
-                <div className="pt-6 border-t">
-                  <Button className="w-full rounded-full shadow-md shadow-primary/20" asChild>
+                <div className="pt-6 border-t mt-8">
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Вы можете поддержать этот проект финансово, если у вас есть такая возможность. Любая сумма поможет в реализации добрых дел.
+                  </p>
+                  <Button className="w-full rounded-full" variant="outline" asChild>
                     <Link href={`/donate/${project.id}`}>
-                      Поддержать проект
+                      Пожертвовать
                     </Link>
                   </Button>
                 </div>
@@ -162,36 +171,6 @@ export default function ProjectSingle() {
           </div>
         </div>
 
-        {/* Related News Section */}
-        {relatedNews.length > 0 && (
-          <div className="mt-16">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-serif font-bold">Новости проекта</h2>
-              <Button variant="link" className="text-primary" asChild>
-                <Link href="/news">Все новости</Link>
-              </Button>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {relatedNews.map(news => (
-                <Link key={news.id} href={`/news/${news.id}`} className="group bg-white rounded-xl border p-5 hover:shadow-md transition-shadow flex flex-col h-full">
-                    <time className="text-xs font-semibold text-muted-foreground mb-2 flex items-center">
-                      <Calendar className="w-3 h-3 mr-1.5" />
-                      {new Date(news.date).toLocaleDateString('ru-RU')}
-                    </time>
-                    <h3 className="font-serif font-semibold text-lg mb-3 group-hover:text-primary transition-colors">
-                      {news.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-3 mb-4 flex-1">
-                      {news.summary}
-                    </p>
-                    <div className="text-primary text-sm font-medium flex items-center mt-auto">
-                      Читать <ArrowRight className="ml-1 w-3 h-3 transition-transform group-hover:translate-x-1" />
-                    </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

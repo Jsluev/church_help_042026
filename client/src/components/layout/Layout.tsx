@@ -29,7 +29,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
+            <div className="flex flex-col items-end mr-2">
+              <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">Горячая линия</span>
+              <a href="tel:88007070222" className="text-sm font-bold text-primary hover:underline leading-none mt-1">8 800 70 70 222</a>
+            </div>
+            <div className="w-px h-8 bg-border mx-2"></div>
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
                   location === link.href ? "text-primary" : "text-muted-foreground"
@@ -42,13 +47,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             }`}>
               Добавить проект
             </Link>
-            <Button variant="default" size="sm" className="ml-4 rounded-full font-medium shrink-0 whitespace-nowrap" asChild>
+            <Button variant="default" size="sm" className="ml-2 rounded-full font-medium shrink-0 whitespace-nowrap" asChild>
               <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь</Link>
             </Button>
           </nav>
 
           {/* Mobile Nav */}
-          <div className="lg:hidden flex items-center">
+          <div className="lg:hidden flex items-center gap-4">
+            <div className="flex flex-col items-end">
+              <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">Горячая линия</span>
+              <a href="tel:88007070222" className="text-sm font-bold text-primary hover:underline leading-none mt-1">8 800 70 70 222</a>
+            </div>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-primary">

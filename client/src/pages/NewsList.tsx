@@ -1,15 +1,24 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight, Tags } from "lucide-react";
 import { NEWS } from "@/lib/mock-data";
 import { Button } from "@/components/ui/button";
+
+const NEWS_CATEGORIES = [
+  "Все", "Гуманитарная помощь", "Помощь бездомным", "Поддержка семьи", "Помощь инвалидам", "Работа с зависимыми", "Больничное служение"
+];
 
 export default function NewsList() {
   const ITEMS_PER_PAGE = 6;
   const [currentPage, setCurrentPage] = useState(1);
+  const [activeCategory, setActiveCategory] = useState("Все");
 
-  const totalPages = Math.ceil(NEWS.length / ITEMS_PER_PAGE);
-  const currentNews = NEWS.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
+  const filteredNews = activeCategory === "Все" 
+    ? NEWS 
+    : NEWS.filter((_, i) => i % NEWS_CATEGORIES.length === NEWS_CATEGORIES.indexOf(activeCategory)); // Mock filtering
+
+  const totalPages = Math.ceil(filteredNews.length / ITEMS_PER_PAGE);
+  const currentNews = filteredNews.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-6xl flex flex-col min-h-[calc(100vh-200px)]">
@@ -20,8 +29,31 @@ export default function NewsList() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 lg:gap-12 flex-1">
-        {currentNews.map((news) => (
+      <div className="mb-10">
+        <div className="flex items-center gap-2 mb-4">
+          <Tags className="w-5 h-5 text-muted-foreground" />
+          <h2 className="text-lg font-medium">Рубрики:</h2>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {NEWS_CATEGORIES.map(category => (
+            <Button 
+              key={category} 
+              variant={activeCategory === category ? "default" : "outline"}
+              className="rounded-full"
+              onClick={() => {
+                setActiveCategory(category);
+                setCurrentPage(1);
+              }}
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {currentNews.length > 0 ? (
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 flex-1">
+          {currentNews.map((news) => (
           <Link key={news.id} href={`/news/${news.id}`} className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border shadow-sm hover:shadow-lg transition-all duration-300">
               <div className="aspect-[16/10] overflow-hidden bg-muted relative">
                 <img 
@@ -49,7 +81,11 @@ export default function NewsList() {
               </div>
           </Link>
         ))}
-      </div>
+      ) : (
+        <div className="text-center py-20 bg-slate-50 rounded-2xl border border-dashed flex-1">
+          <p className="text-muted-foreground">В этой рубрике пока нет новостей.</p>
+        </div>
+      )}
 
       {totalPages > 1 && (
         <div className="mt-12 flex justify-center items-center gap-2">
