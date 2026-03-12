@@ -39,25 +39,13 @@ export default function Home() {
                 </Button>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a href="tel:88007070222" className="bg-primary text-primary-foreground p-4 rounded-2xl shadow-md shadow-primary/20 inline-flex items-center gap-4 hover:bg-primary/90 transition-colors group">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-medium text-primary-foreground/80 uppercase tracking-wider mb-0.5">Горячая линия помощи</div>
-                    <div className="text-lg font-bold">8 800 70 70 222</div>
-                  </div>
-                </a>
-
-                <div className="bg-white/60 backdrop-blur-sm p-4 rounded-2xl border shadow-sm inline-flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
-                    <Shield className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-foreground">Координируется Синодальным отделом</div>
-                    <div className="text-xs text-muted-foreground">по церковной благотворительности</div>
-                  </div>
+              <div className="bg-white/60 backdrop-blur-sm p-4 md:p-5 rounded-2xl border shadow-sm inline-flex items-center gap-4">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                  <Shield className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-foreground">Координируется Синодальным отделом</div>
+                  <div className="text-sm text-muted-foreground">по церковной благотворительности</div>
                 </div>
               </div>
             </div>
@@ -76,6 +64,26 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Horizontal Hotline Banner */}
+          <a href="tel:88007070222" className="mt-8 bg-primary text-primary-foreground p-6 md:p-8 lg:p-10 rounded-3xl shadow-xl shadow-primary/20 flex flex-col md:flex-row items-center justify-between hover:bg-primary/95 transition-all group relative overflow-hidden">
+            {/* Subtle background gradient */}
+            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+            
+            <div className="flex flex-col md:flex-row items-center gap-6 relative z-10 mb-6 md:mb-0 text-center md:text-left">
+              <div className="w-16 h-16 md:w-20 md:h-20 bg-white/20 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-inner">
+                <Phone className="w-8 h-8 md:w-10 md:h-10" />
+              </div>
+              <div>
+                <div className="text-sm md:text-base font-medium text-primary-foreground/90 uppercase tracking-wider mb-2">Круглосуточная горячая линия помощи</div>
+                <div className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">8 800 70 70 222</div>
+              </div>
+            </div>
+            
+            <div className="relative z-10 flex items-center bg-white text-primary px-8 py-4 rounded-full font-bold text-lg shadow-md group-hover:bg-slate-50 transition-colors w-full md:w-auto justify-center">
+              Позвонить <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
         </div>
       </section>
 
