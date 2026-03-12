@@ -120,8 +120,8 @@ const FALLBACK_IMAGES = [
   "/images/ortho_10.png"
 ];
 
-// Generate 12 news items total (3 original + 9 new) for pagination testing
-export const NEWS = Array.from({ length: 12 }).map((_, i) => ({
+// Generate 42 news items total for pagination testing
+export const NEWS = Array.from({ length: 42 }).map((_, i) => ({
   id: `${i + 1}`,
   projectId: i % 2 === 0 ? "1" : "2",
   title: i === 0 ? "Открытие нового пункта выдачи вещей в центре «Милосердие»" : 
