@@ -20,8 +20,8 @@ export default function ProjectSingle() {
     );
   }
 
-  // Find related news
-  const relatedNews = NEWS.filter(n => n.projectId === id);
+  // Use latest news
+  const latestNews = NEWS.slice(0, 3);
 
   return (
     <div className="bg-slate-50/50 min-h-screen pb-20">
@@ -168,6 +168,51 @@ export default function ProjectSingle() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Latest News Widget */}
+        <div className="mt-16">
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <h2 className="text-3xl font-serif font-bold mb-3">Новости служения</h2>
+            </div>
+            <Button variant="ghost" className="hidden sm:flex text-primary hover:text-primary/80" asChild>
+              <Link href="/news">Все новости <ArrowRight className="ml-2 w-4 h-4" /></Link>
+            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {latestNews.map((news) => (
+              <Link key={news.id} href={`/news/${news.id}`} className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border shadow-sm hover:shadow-md transition-all">
+                  <div className="aspect-[4/3] overflow-hidden bg-muted relative">
+                    <img 
+                      src={news.image} 
+                      alt={news.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <time className="text-xs font-semibold text-secondary uppercase tracking-wider mb-3">
+                      {new Date(news.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </time>
+                    <h3 className="font-serif text-xl font-semibold mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                      {news.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm line-clamp-3 mb-4 flex-1">
+                      {news.summary}
+                    </p>
+                    <div className="text-primary text-sm font-medium flex items-center mt-auto">
+                      Читать далее <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8 text-center sm:hidden">
+            <Button variant="outline" className="w-full" asChild>
+              <Link href="/news">Все новости</Link>
+            </Button>
           </div>
         </div>
 
