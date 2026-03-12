@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Search, Heart, Shield, Users, Newspaper, MapPin } from "lucide-react";
+import { ArrowRight, Search, Heart, Shield, Users, Newspaper, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { NEWS } from "@/lib/mock-data";
@@ -39,13 +39,25 @@ export default function Home() {
                 </Button>
               </div>
               
-              <div className="bg-white/60 backdrop-blur-sm p-4 rounded-2xl border shadow-sm inline-flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
-                  <Shield className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-foreground">Координируется Синодальным отделом</div>
-                  <div className="text-xs text-muted-foreground">по церковной благотворительности</div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="tel:88007070222" className="bg-primary text-primary-foreground p-4 rounded-2xl shadow-md shadow-primary/20 inline-flex items-center gap-4 hover:bg-primary/90 transition-colors group">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-medium text-primary-foreground/80 uppercase tracking-wider mb-0.5">Горячая линия помощи</div>
+                    <div className="text-lg font-bold">8 800 70 70 222</div>
+                  </div>
+                </a>
+
+                <div className="bg-white/60 backdrop-blur-sm p-4 rounded-2xl border shadow-sm inline-flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                    <Shield className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-foreground">Координируется Синодальным отделом</div>
+                    <div className="text-xs text-muted-foreground">по церковной благотворительности</div>
+                  </div>
                 </div>
               </div>
             </div>
