@@ -154,7 +154,7 @@ export default function Home() {
              <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{
                 backgroundImage: 'url("/images/map-placeholder.png")',
              }}>
-               <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]"></div>
+               <div className="absolute inset-0 bg-white/20"></div>
              </div>
              
              <div className="relative z-10 flex items-center justify-center h-full">
