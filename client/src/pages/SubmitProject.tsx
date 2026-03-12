@@ -33,87 +33,91 @@ export default function SubmitProject() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-3xl">
-      <Button variant="ghost" className="text-muted-foreground hover:text-foreground -ml-4 mb-6" asChild>
+    <div className="container mx-auto px-4 py-8 md:py-12 max-w-3xl">
+      <Button variant="ghost" className="text-muted-foreground hover:text-foreground -ml-2 md:-ml-4 mb-4 md:mb-6" asChild>
         <Link href="/">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Назад
         </Link>
       </Button>
-      <div className="mb-8">
-        <h1 className="text-4xl font-serif font-bold mb-3">Добавить проект</h1>
-        <p className="text-muted-foreground text-lg">
+      <div className="mb-6 md:mb-8">
+        <h1 className="text-3xl md:text-4xl font-serif font-bold mb-3">Добавить проект</h1>
+        <p className="text-muted-foreground text-base md:text-lg">
           Заполните форму, чтобы мы могли добавить ваш церковный социальный проект в единую базу данных.
         </p>
       </div>
-      <Card>
-        <CardHeader>
-          <CardTitle>Информация о проекте</CardTitle>
-          <CardDescription>
+      <Card className="border-border shadow-sm">
+        <CardHeader className="px-4 py-6 md:p-6 md:pb-4 border-b border-border/50 bg-slate-50/50">
+          <CardTitle className="text-xl md:text-2xl">Информация о проекте</CardTitle>
+          <CardDescription className="text-sm md:text-base">
             Пожалуйста, укажите максимально подробную и актуальную информацию. Все поля обязательны к заполнению.
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <CardContent className="px-4 py-6 md:p-6">
+          <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
             <div className="space-y-2">
-              <Label htmlFor="projectName">Название проекта</Label>
-              <Input id="projectName" placeholder="Например: Приют «Милосердие»" required />
+              <Label htmlFor="projectName" className="text-base font-semibold">Название проекта</Label>
+              <Input id="projectName" placeholder="Например: Приют «Милосердие»" required className="h-12" />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
               <div className="space-y-2">
-                <Label htmlFor="region">Регион (Субъект РФ)</Label>
-                <Input id="region" placeholder="Московская область" required />
+                <Label htmlFor="region" className="text-base font-semibold">Регион (Субъект РФ)</Label>
+                <Input id="region" placeholder="Московская область" required className="h-12" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="city">Город / Населенный пункт</Label>
-                <Input id="city" placeholder="Москва" required />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="address">Точный адрес</Label>
-              <Input id="address" placeholder="ул. Ленина, д. 1" required />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="organization">Церковная принадлежность (Учредитель / Храм / Епархия)</Label>
-              <Input id="organization" placeholder="Например: При храме св. Николая или учреждено епархией" required />
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label htmlFor="phone">Контактный телефон</Label>
-                <Input id="phone" type="tel" placeholder="+7 (999) 000-00-00" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Электронная почта</Label>
-                <Input id="email" type="email" placeholder="mail@example.com" required />
+                <Label htmlFor="city" className="text-base font-semibold">Город / Населенный пункт</Label>
+                <Input id="city" placeholder="Москва" required className="h-12" />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="website">Сайт или социальные сети проекта</Label>
-              <Input id="website" type="url" placeholder="https://vk.com/..." required />
-              <p className="text-xs text-muted-foreground">Ссылка на ресурс, где регулярно публикуются новости о вашей деятельности.</p>
+              <Label htmlFor="address" className="text-base font-semibold">Точный адрес</Label>
+              <Input id="address" placeholder="ул. Ленина, д. 1" required className="h-12" />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="description">Описание деятельности проекта</Label>
+              <Label htmlFor="organization" className="text-base font-semibold block leading-snug">
+                Церковная принадлежность <span className="text-muted-foreground font-normal text-sm block sm:inline mt-1 sm:mt-0">(Учредитель / Храм / Епархия)</span>
+              </Label>
+              <Input id="organization" placeholder="Например: При храме св. Николая..." required className="h-12" />
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-base font-semibold">Контактный телефон</Label>
+                <Input id="phone" type="tel" placeholder="+7 (999) 000-00-00" required className="h-12" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-base font-semibold">Электронная почта</Label>
+                <Input id="email" type="email" placeholder="mail@example.com" required className="h-12" />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="website" className="text-base font-semibold block">Сайт или социальные сети проекта</Label>
+              <Input id="website" type="url" placeholder="https://vk.com/..." required className="h-12" />
+              <p className="text-xs md:text-sm text-muted-foreground mt-1.5 leading-snug">Ссылка на ресурс, где регулярно публикуются новости о вашей деятельности.</p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="description" className="text-base font-semibold">Описание деятельности проекта</Label>
               <Textarea 
                 id="description" 
                 placeholder="Расскажите, кому и как именно вы помогаете. Опишите ваши регулярные мероприятия..." 
-                className="min-h-[120px]" 
+                className="min-h-[150px] resize-y" 
                 required 
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="leader">ФИО руководителя / Контактное лицо</Label>
-              <Input id="leader" placeholder="Иванов Иван Иванович" required />
+              <Label htmlFor="leader" className="text-base font-semibold block leading-snug">
+                ФИО руководителя <span className="text-muted-foreground font-normal text-sm block sm:inline mt-1 sm:mt-0">(или контактного лица)</span>
+              </Label>
+              <Input id="leader" placeholder="Иванов Иван Иванович" required className="h-12" />
             </div>
 
-            <Button type="submit" size="lg" className="w-full">
+            <Button type="submit" size="lg" className="w-full h-14 text-base md:text-lg font-medium rounded-xl shadow-md shadow-primary/20 mt-4">
               Отправить заявку на проверку
             </Button>
           </form>

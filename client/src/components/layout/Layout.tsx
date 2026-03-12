@@ -26,10 +26,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-primary hover:opacity-90 transition-opacity">
-            <HeartHandshake className="h-7 w-7 shrink-0" />
-            <div className="flex items-baseline gap-2">
-              <span className="font-serif font-bold text-lg leading-tight tracking-tight whitespace-nowrap">Церковь Помогает</span>
+          <Link href="/" className="flex items-center gap-2 text-primary hover:opacity-90 transition-opacity overflow-hidden shrink min-w-0">
+            <HeartHandshake className="h-6 w-6 sm:h-7 sm:w-7 shrink-0" />
+            <div className="flex items-baseline gap-2 overflow-hidden">
+              <span className="font-serif font-bold text-base sm:text-lg leading-tight tracking-tight truncate">Церковь Помогает</span>
             </div>
           </Link>
 
@@ -58,10 +58,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </nav>
 
           {/* Mobile Nav */}
-          <div className="lg:hidden flex items-center gap-4">
-            <div className="flex flex-col items-end">
+          <div className="lg:hidden flex items-center gap-2 sm:gap-4 shrink-0">
+            <div className="flex flex-col items-end hidden sm:flex">
               <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">Горячая линия</span>
-              <a href="tel:88007070222" className="text-sm font-bold text-primary hover:underline leading-none mt-1">8 800 70 70 222</a>
+              <a href="tel:88007070222" className="text-sm font-bold text-primary hover:underline leading-none mt-1 whitespace-nowrap">8 800 70 70 222</a>
             </div>
             <Sheet>
               <SheetTrigger asChild>
