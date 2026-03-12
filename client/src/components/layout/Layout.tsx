@@ -1,4 +1,5 @@
 import { Link, useLocation } from "wouter";
+import { useEffect } from "react";
 import { HeartHandshake, Menu, MapPin, Search, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,6 +10,10 @@ import {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   const navLinks = [
     { href: "/projects", label: "Каталог проектов" },
