@@ -19,46 +19,42 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="max-w-3xl">
-              <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase mb-6">
-                Социальное служение Церкви
-              </span>
-              <h1 className="text-4xl lg:text-6xl font-serif font-bold text-foreground leading-tight mb-6">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-primary/10 text-primary w-fit mb-6">
+                <Shield className="w-4 h-4" />
+                <span className="text-xs font-bold tracking-wider uppercase mt-0.5">
+                  Проект Синодального отдела
+                </span>
+              </div>
+              
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-foreground leading-tight mb-6">
                 Единая база церковных социальных проектов
               </h1>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-2xl">
+              
+              <p className="text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl">
                 Мы собираем и верифицируем информацию о церковных инициативах помощи по всей России, чтобы нуждающиеся могли найти поддержку, а благотворители — надежные проекты.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Button size="lg" className="rounded-full text-base px-8 font-medium shadow-md shadow-primary/20" asChild>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="rounded-full text-base px-8 h-14 font-medium shadow-md shadow-primary/20" asChild>
                   <Link href="/projects"><Search className="w-5 h-5 mr-2" /> Каталог проектов</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full text-base px-8 bg-white" asChild>
+                <Button size="lg" variant="outline" className="rounded-full text-base px-8 h-14 bg-white" asChild>
                   <Link href="/about" className="text-primary hover:text-primary">О портале</Link>
                 </Button>
               </div>
-              
-              <div className="bg-white/60 backdrop-blur-sm p-4 md:p-5 rounded-2xl border shadow-sm inline-flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
-                  <Shield className="w-6 h-6" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-foreground">Координируется Синодальным отделом</div>
-                  <div className="text-sm text-muted-foreground">по церковной благотворительности</div>
-                </div>
-              </div>
             </div>
 
-            <div className="hidden lg:block relative rounded-2xl overflow-hidden shadow-xl border bg-muted aspect-video">
+            <div className="hidden lg:block relative rounded-3xl overflow-hidden shadow-xl border bg-muted aspect-video">
               {/* Video Placeholder */}
               <div className="absolute inset-0 flex items-center justify-center bg-slate-900 group cursor-pointer">
                 <img 
                   src="/images/ortho_6.png" 
                   alt="Презентация проекта" 
-                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity"
+                  className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500"
                 />
-                <div className="absolute w-20 h-20 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <div className="absolute w-20 h-20 bg-primary/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl group-hover:scale-110 group-hover:bg-primary transition-all duration-300">
                   <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
                 </div>
               </div>
@@ -66,7 +62,7 @@ export default function Home() {
           </div>
 
           {/* Horizontal Hotline Banner */}
-          <a href="tel:88007070222" className="mt-8 bg-primary text-primary-foreground p-6 md:p-8 lg:p-10 rounded-3xl shadow-xl shadow-primary/20 flex flex-col md:flex-row items-center justify-between hover:bg-primary/95 transition-all group relative overflow-hidden">
+          <a href="tel:88007070222" className="mt-12 lg:mt-16 bg-primary text-primary-foreground p-6 md:p-8 lg:p-10 rounded-3xl shadow-xl shadow-primary/20 flex flex-col md:flex-row items-center justify-between hover:bg-primary/95 transition-all group relative overflow-hidden">
             {/* Subtle background gradient */}
             <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent opacity-60 pointer-events-none"></div>
             
