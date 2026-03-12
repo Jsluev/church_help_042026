@@ -57,18 +57,11 @@ export default function About() {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl font-serif font-bold mb-6">О проекте и правилах размещения</h2>
+              <h2 className="text-3xl font-serif font-bold mb-6">Наша миссия</h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
                 Мы стремимся объединить всех, кто нуждается в помощи, с теми, кто готов ее оказать. Платформа делает церковную социальную работу прозрачной, доступной и понятной для каждого человека.
               </p>
-              <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                В каталог включаются проекты, отвечающие следующим критериям: наличие юридического лица (религиозной организации), учреждение религиозной организацией или действие по письменному благословению архиерея.
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <ShieldCheck className="w-6 h-6 text-primary mr-3 shrink-0" />
-                  <span className="text-slate-700 font-medium">Проверенные и надежные организации</span>
-                </li>
+              <ul className="space-y-4 mt-8">
                 <li className="flex items-start">
                   <Target className="w-6 h-6 text-primary mr-3 shrink-0" />
                   <span className="text-slate-700 font-medium">Целевая и адресная помощь нуждающимся</span>
@@ -99,6 +92,66 @@ export default function About() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Principles Section */}
+      <section className="py-20 bg-slate-50 border-y border-slate-100">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-serif font-bold mb-4">Принципы отбора проектов</h2>
+            <p className="text-lg text-slate-600">
+              Чтобы обеспечить доверие благотворителей и нуждающихся, все проекты в каталоге проходят верификацию и должны соответствовать следующим критериям:
+            </p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div className="flex items-center gap-3 mb-3">
+                <ShieldCheck className="w-6 h-6 text-primary" />
+                <h3 className="font-bold text-lg">Церковная принадлежность</h3>
+              </div>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Проект реализуется религиозной организацией или действует по официальному благословению правящего архиерея.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">₽</div>
+                <h3 className="font-bold text-lg">Прозрачные финансы</h3>
+              </div>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Сбор средств осуществляется только на расчетные счета организаций. Запрещены сборы на личные банковские карты.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div className="flex items-center gap-3 mb-3">
+                <Target className="w-6 h-6 text-primary" />
+                <h3 className="font-bold text-lg">Реальная деятельность</h3>
+              </div>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Проект имеет опыт работы не менее 3 месяцев и регулярно (не реже раза в месяц) оказывает помощь или проводит акции.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+              <div className="flex items-center gap-3 mb-3">
+                <Users className="w-6 h-6 text-primary" />
+                <h3 className="font-bold text-lg">Открытость обществу</h3>
+              </div>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Проект ведет активную информационную политику: обновляет сайт или соцсети (минимум 1 публикация в неделю) и публикует отчеты.
+              </p>
+            </div>
+          </div>
+          
+          <div className="mt-10 text-center">
+            <Button asChild>
+              <Link href="/submit">Подать заявку на добавление</Link>
+            </Button>
           </div>
         </div>
       </section>

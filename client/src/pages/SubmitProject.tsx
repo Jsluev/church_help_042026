@@ -1,18 +1,29 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function SubmitProject() {
   const [submitted, setSubmitted] = useState(false);
+  const [agreements, setAgreements] = useState({
+    church: false,
+    finance: false,
+    active: false,
+    media: false
+  });
+
+  const canSubmit = Object.values(agreements).every(Boolean);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (canSubmit) {
+      setSubmitted(true);
+    }
   };
 
   if (submitted) {
@@ -79,8 +90,8 @@ export default function SubmitProject() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="organization">Церковная принадлежность (Учредитель / Храм)</Label>
-              <Input id="organization" placeholder="При храме св. Николая" required />
+              <Label htmlFor="organization">Церковная принадлежность (Учредитель / Храм / Епархия)</Label>
+              <Input id="organization" placeholder="Например: При храме св. Николая или учреждено епархией" required />
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -95,10 +106,16 @@ export default function SubmitProject() {
             </div>
 
             <div className="space-y-2">
+              <Label htmlFor="website">Сайт или социальные сети проекта</Label>
+              <Input id="website" type="url" placeholder="https://vk.com/..." required />
+              <p className="text-xs text-muted-foreground">Ссылка на ресурс, где регулярно публикуются новости о вашей деятельности.</p>
+            </div>
+
+            <div className="space-y-2">
               <Label htmlFor="description">Описание деятельности проекта</Label>
               <Textarea 
                 id="description" 
-                placeholder="Расскажите, кому и как именно вы помогаете..." 
+                placeholder="Расскажите, кому и как именно вы помогаете. Опишите ваши регулярные мероприятия..." 
                 className="min-h-[120px]" 
                 required 
               />
@@ -109,7 +126,78 @@ export default function SubmitProject() {
               <Input id="leader" placeholder="Иванов Иван Иванович" required />
             </div>
 
-            <Button type="submit" size="lg" className="w-full">
+            <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 space-y-4 mt-8">
+              <div className="flex items-center gap-2 mb-2 text-primary font-bold">
+                <ShieldAlert className="w-5 h-5" />
+                <h4>Декларация принципов портала</h4>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <Checkbox 
+                  id="agree-church" 
+                  checked={agreements.church}
+                  onCheckedChange={(c) => setAgreements(prev => ({...prev, church: !!c}))}
+                />
+                <div className="grid gap-1.5 leading-none">
+                  <label htmlFor="agree-church" className="text-sm font-medium leading-none cursor-pointer">
+                    Церковная принадлежность
+                  </label>
+                  <p className="text-xs text-muted-foreground">
+                    Проект реализуется религиозной организацией или осуществляется по письменному благословению архиерея.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <Checkbox 
+                  id="agree-finance" 
+                  checked={agreements.finance}
+                  onCheckedChange={(c) => setAgreements(prev => ({...prev, finance: !!c}))}
+                />
+                <div className="grid gap-1.5 leading-none">
+                  <label htmlFor="agree-finance" className="text-sm font-medium leading-none cursor-pointer">
+                    Прозрачные сборы
+                  </label>
+                  <p className="text-xs text-muted-foreground">
+                    Мы не ведем сбор пожертвований на личные банковские карты физических лиц.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <Checkbox 
+                  id="agree-active" 
+                  checked={agreements.active}
+                  onCheckedChange={(c) => setAgreements(prev => ({...prev, active: !!c}))}
+                />
+                <div className="grid gap-1.5 leading-none">
+                  <label htmlFor="agree-active" className="text-sm font-medium leading-none cursor-pointer">
+                    Опыт и реальная деятельность
+                  </label>
+                  <p className="text-xs text-muted-foreground">
+                    Проект непрерывно работает не менее 3 месяцев и регулярно (не реже 1 раза в месяц) оказывает помощь.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <Checkbox 
+                  id="agree-media" 
+                  checked={agreements.media}
+                  onCheckedChange={(c) => setAgreements(prev => ({...prev, media: !!c}))}
+                />
+                <div className="grid gap-1.5 leading-none">
+                  <label htmlFor="agree-media" className="text-sm font-medium leading-none cursor-pointer">
+                    Открытость
+                  </label>
+                  <p className="text-xs text-muted-foreground">
+                    Проект ведет активную информационную политику в интернете с регулярностью обновлений не реже 1 раза в неделю.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <Button type="submit" size="lg" className="w-full" disabled={!canSubmit}>
               Отправить заявку на проверку
             </Button>
           </form>
