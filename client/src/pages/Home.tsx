@@ -91,6 +91,88 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Latest News */}
+      <section className="py-20 bg-slate-50 border-b border-border">
+        <div className="container mx-auto px-4">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <h2 className="text-3xl font-serif font-bold mb-3">Новости проектов</h2>
+              <p className="text-muted-foreground">Актуальные события социального служения</p>
+            </div>
+            <Button variant="ghost" className="hidden sm:flex text-primary hover:text-primary/80" asChild>
+              <Link href="/news">Все новости <ArrowRight className="ml-2 w-4 h-4" /></Link>
+            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {latestNews.map((news) => (
+              <Link key={news.id} href={`/news/${news.id}`} className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border shadow-sm hover:shadow-md transition-all">
+                  <div className="aspect-[4/3] overflow-hidden bg-muted relative">
+                    <img 
+                      src={news.image} 
+                      alt={news.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <time className="text-xs font-semibold text-secondary uppercase tracking-wider mb-3">
+                      {new Date(news.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </time>
+                    <h3 className="font-serif text-xl font-semibold mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                      {news.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm line-clamp-3 mb-4 flex-1">
+                      {news.summary}
+                    </p>
+                    <div className="text-primary text-sm font-medium flex items-center mt-auto">
+                      Читать далее <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8 text-center sm:hidden">
+            <Button variant="outline" className="w-full" asChild>
+              <Link href="/news">Все новости</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Map Infographic Section */}
+      <section className="py-20 lg:py-28 bg-white border-b border-border">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-serif font-bold mb-4">География служения</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Церковные социальные инициативы работают в каждой епархии от Калининграда до Владивостока
+            </p>
+          </div>
+          
+          <div className="relative w-full aspect-[2/1] bg-slate-50 rounded-3xl border overflow-hidden shadow-sm group">
+             {/* Map image background */}
+             <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{
+                backgroundImage: 'url("/images/map-placeholder.png")',
+             }}>
+               <div className="absolute inset-0 bg-white/20"></div>
+             </div>
+             
+             <div className="relative z-10 flex items-center justify-center h-full">
+               <div className="text-center p-8 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border max-w-md mx-4 transform transition-all group-hover:-translate-y-1">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
+                    <MapPin className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-serif font-bold text-xl mb-2">Интерактивная карта</h3>
+                  <p className="text-sm text-slate-600 mb-6">В разработке. Здесь будет доступен удобный визуальный поиск центров помощи по регионам России.</p>
+                  <Button variant="default" className="w-full rounded-full shadow-md shadow-primary/20" asChild>
+                    <Link href="/projects">Перейти в каталог проектов</Link>
+                  </Button>
+               </div>
+             </div>
+          </div>
+        </div>
+      </section>
+
       {/* About Platform / Features Section */}
       <section id="about" className="py-20 lg:py-28 bg-slate-50 border-b border-border">
         <div className="container mx-auto px-4">
@@ -143,88 +225,6 @@ export default function Home() {
             <Button variant="outline" size="lg" className="rounded-full" asChild>
               <Link href="/about">Читать подробнее о проекте</Link>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Latest News */}
-      <section className="py-20 bg-white border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h2 className="text-3xl font-serif font-bold mb-3">Новости проектов</h2>
-              <p className="text-muted-foreground">Актуальные события социального служения</p>
-            </div>
-            <Button variant="ghost" className="hidden sm:flex text-primary hover:text-primary/80" asChild>
-              <Link href="/news">Все новости <ArrowRight className="ml-2 w-4 h-4" /></Link>
-            </Button>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {latestNews.map((news) => (
-              <Link key={news.id} href={`/news/${news.id}`} className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border shadow-sm hover:shadow-md transition-all">
-                  <div className="aspect-[4/3] overflow-hidden bg-muted relative">
-                    <img 
-                      src={news.image} 
-                      alt={news.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <time className="text-xs font-semibold text-secondary uppercase tracking-wider mb-3">
-                      {new Date(news.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })}
-                    </time>
-                    <h3 className="font-serif text-xl font-semibold mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                      {news.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm line-clamp-3 mb-4 flex-1">
-                      {news.summary}
-                    </p>
-                    <div className="text-primary text-sm font-medium flex items-center mt-auto">
-                      Читать далее <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </div>
-                  </div>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-8 text-center sm:hidden">
-            <Button variant="outline" className="w-full" asChild>
-              <Link href="/news">Все новости</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Infographic Section */}
-      <section className="py-20 lg:py-28 bg-slate-50 border-b border-border">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-serif font-bold mb-4">География служения</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Церковные социальные инициативы работают в каждой епархии от Калининграда до Владивостока
-            </p>
-          </div>
-          
-          <div className="relative w-full aspect-[2/1] bg-slate-50 rounded-3xl border overflow-hidden shadow-sm group">
-             {/* Map image background */}
-             <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{
-                backgroundImage: 'url("/images/map-placeholder.png")',
-             }}>
-               <div className="absolute inset-0 bg-white/20"></div>
-             </div>
-             
-             <div className="relative z-10 flex items-center justify-center h-full">
-               <div className="text-center p-8 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border max-w-md mx-4 transform transition-all group-hover:-translate-y-1">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
-                    <MapPin className="w-8 h-8" />
-                  </div>
-                  <h3 className="font-serif font-bold text-xl mb-2">Интерактивная карта</h3>
-                  <p className="text-sm text-slate-600 mb-6">В разработке. Здесь будет доступен удобный визуальный поиск центров помощи по регионам России.</p>
-                  <Button variant="default" className="w-full rounded-full shadow-md shadow-primary/20" asChild>
-                    <Link href="/projects">Перейти в каталог проектов</Link>
-                  </Button>
-               </div>
-             </div>
           </div>
         </div>
       </section>
