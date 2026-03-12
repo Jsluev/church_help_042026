@@ -140,10 +140,10 @@ export default function SubmitProject() {
                 />
                 <div className="grid gap-1.5 leading-none">
                   <label htmlFor="agree-church" className="text-sm font-medium leading-none cursor-pointer">
-                    Церковная принадлежность
+                    Церковная принадлежность и послушание священноначалию
                   </label>
                   <p className="text-xs text-muted-foreground">
-                    Проект реализуется религиозной организацией или осуществляется по письменному благословению архиерея.
+                    Проект реализуется/учрежден религиозной организацией или действует по письменному благословению архиерея, и поддерживает конструктивные рабочие отношения с епархиальным управлением.
                   </p>
                 </div>
               </div>
@@ -156,10 +156,10 @@ export default function SubmitProject() {
                 />
                 <div className="grid gap-1.5 leading-none">
                   <label htmlFor="agree-finance" className="text-sm font-medium leading-none cursor-pointer">
-                    Прозрачные сборы
+                    Доверие жертвователей
                   </label>
                   <p className="text-xs text-muted-foreground">
-                    Мы не ведем сбор пожертвований на личные банковские карты физических лиц.
+                    Сбор пожертвований на личные банковские карты физических лиц не ведется. Использование расчётного счета юридического лица или официальных ящиков.
                   </p>
                 </div>
               </div>
@@ -172,10 +172,10 @@ export default function SubmitProject() {
                 />
                 <div className="grid gap-1.5 leading-none">
                   <label htmlFor="agree-active" className="text-sm font-medium leading-none cursor-pointer">
-                    Опыт и реальная деятельность
+                    Опыт, устойчивость и реальная деятельность («Живой проект»)
                   </label>
                   <p className="text-xs text-muted-foreground">
-                    Проект непрерывно работает не менее 3 месяцев и регулярно (не реже 1 раза в месяц) оказывает помощь.
+                    Деятельность проекта юридически закреплена уставными документами. Срок непрерывной работы не менее 3 месяцев, регулярные мероприятия или оказание адресной помощи — не менее раза в месяц.
                   </p>
                 </div>
               </div>
@@ -188,10 +188,10 @@ export default function SubmitProject() {
                 />
                 <div className="grid gap-1.5 leading-none">
                   <label htmlFor="agree-media" className="text-sm font-medium leading-none cursor-pointer">
-                    Открытость
+                    Открытая информационная политика
                   </label>
                   <p className="text-xs text-muted-foreground">
-                    Проект ведет активную информационную политику в интернете с регулярностью обновлений не реже 1 раза в неделю.
+                    Проект рассказывает о своей деятельности обществу: наличие действующего сайта или страниц в социальных сетях с регулярностью обновлений не менее одной публикации в неделю.
                   </p>
                 </div>
               </div>

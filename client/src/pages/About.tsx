@@ -100,9 +100,9 @@ export default function About() {
       <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-serif font-bold mb-4">Принципы отбора проектов</h2>
+            <h2 className="text-3xl font-serif font-bold mb-4">Декларация принципов</h2>
             <p className="text-lg text-slate-600">
-              Чтобы обеспечить доверие благотворителей и нуждающихся, все проекты в каталоге проходят верификацию и должны соответствовать следующим критериям:
+              Все проекты в каталоге проходят верификацию и соответствуют следующим ключевым критериям:
             </p>
           </div>
           
@@ -110,40 +110,40 @@ export default function About() {
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
               <div className="flex items-center gap-3 mb-3">
                 <ShieldCheck className="w-6 h-6 text-primary" />
-                <h3 className="font-bold text-lg">Церковная принадлежность</h3>
+                <h3 className="font-bold text-lg">Церковная принадлежность и мир</h3>
               </div>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Проект реализуется религиозной организацией или действует по официальному благословению правящего архиерея.
+                Проект осознает себя частью социального служения: реализуется или учреждён религиозной организацией, либо действует по письменному благословению правящего архиерея, и поддерживает конструктивные рабочие отношения с епархией.
               </p>
             </div>
             
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">₽</div>
-                <h3 className="font-bold text-lg">Прозрачные финансы</h3>
+                <h3 className="font-bold text-lg">Доверие жертвователей</h3>
               </div>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Сбор средств осуществляется только на расчетные счета организаций. Запрещены сборы на личные банковские карты.
+                Запрет на сбор пожертвований на личные банковские карты физических лиц. Разрешено использование только расчётного счета юридического лица или официальных ящиков.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
               <div className="flex items-center gap-3 mb-3">
                 <Target className="w-6 h-6 text-primary" />
-                <h3 className="font-bold text-lg">Реальная деятельность</h3>
+                <h3 className="font-bold text-lg">Опыт, устойчивость и реальная деятельность</h3>
               </div>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Проект имеет опыт работы не менее 3 месяцев и регулярно (не реже раза в месяц) оказывает помощь или проводит акции.
+                Деятельность проекта юридически закреплена. Срок непрерывной работы на момент подачи заявки составляет не менее 3 месяцев, а оказание адресной помощи или акции проводятся не реже раза в месяц.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
               <div className="flex items-center gap-3 mb-3">
                 <Users className="w-6 h-6 text-primary" />
-                <h3 className="font-bold text-lg">Открытость обществу</h3>
+                <h3 className="font-bold text-lg">Открытая информационная политика</h3>
               </div>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Проект ведет активную информационную политику: обновляет сайт или соцсети (минимум 1 публикация в неделю) и публикует отчеты.
+                Проект рассказывает о своей деятельности обществу: имеет действующий сайт или страницы в социальных сетях с регулярностью обновлений не менее одной публикации в неделю.
               </p>
             </div>
           </div>
