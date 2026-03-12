@@ -149,20 +149,25 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="relative w-full aspect-[2/1] bg-slate-50 rounded-3xl border overflow-hidden flex items-center justify-center shadow-sm">
-             <div className="absolute inset-0 opacity-10" style={{
-                backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-             }}></div>
+          <div className="relative w-full aspect-[2/1] bg-slate-50 rounded-3xl border overflow-hidden shadow-sm group">
+             {/* Map image background */}
+             <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{
+                backgroundImage: 'url("/images/map-placeholder.png")',
+             }}>
+               <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]"></div>
+             </div>
              
-             <div className="text-center z-10 p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-sm border max-w-sm">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
-                  <MapPin className="w-8 h-8" />
-                </div>
-                <h3 className="font-serif font-bold text-xl mb-2">Инфографика в разработке</h3>
-                <p className="text-sm text-muted-foreground mb-6">Здесь будет располагаться визуальная карта проектов по регионам.</p>
-                <Button variant="outline" className="w-full rounded-full" asChild>
-                  <Link href="/projects">Перейти в каталог проектов</Link>
-                </Button>
+             <div className="relative z-10 flex items-center justify-center h-full">
+               <div className="text-center p-8 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border max-w-md mx-4 transform transition-all group-hover:-translate-y-1">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
+                    <MapPin className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-serif font-bold text-xl mb-2">Интерактивная карта</h3>
+                  <p className="text-sm text-slate-600 mb-6">В разработке. Здесь будет доступен удобный визуальный поиск центров помощи по регионам России.</p>
+                  <Button variant="default" className="w-full rounded-full shadow-md shadow-primary/20" asChild>
+                    <Link href="/projects">Перейти в каталог проектов</Link>
+                  </Button>
+               </div>
              </div>
           </div>
         </div>
