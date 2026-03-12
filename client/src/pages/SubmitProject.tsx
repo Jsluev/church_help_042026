@@ -51,14 +51,12 @@ export default function SubmitProject() {
           Назад
         </Link>
       </Button>
-
       <div className="mb-8">
         <h1 className="text-4xl font-serif font-bold mb-3">Добавить проект</h1>
         <p className="text-muted-foreground text-lg">
           Заполните форму, чтобы мы могли добавить ваш церковный социальный проект в единую базу данных.
         </p>
       </div>
-
       <Card>
         <CardHeader>
           <CardTitle>Информация о проекте</CardTitle>
@@ -190,9 +188,7 @@ export default function SubmitProject() {
                   <label htmlFor="agree-media" className="text-sm font-medium leading-none cursor-pointer">
                     Открытая информационная политика
                   </label>
-                  <p className="text-xs text-muted-foreground">
-                    Проект рассказывает о своей деятельности обществу: наличие действующего сайта или страниц в социальных сетях с регулярностью обновлений не менее одной публикации в неделю.
-                  </p>
+                  <p className="text-xs text-muted-foreground">Проект рассказывает о своей деятельности обществу: наличие действующего сайта или страниц в социальных сетях с регулярными обновлениями. </p>
                 </div>
               </div>
             </div>
