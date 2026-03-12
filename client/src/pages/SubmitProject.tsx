@@ -113,76 +113,7 @@ export default function SubmitProject() {
               <Input id="leader" placeholder="Иванов Иван Иванович" required />
             </div>
 
-            <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 space-y-4 mt-8">
-              <div className="flex items-center gap-2 mb-2 text-primary font-bold">
-                <ShieldAlert className="w-5 h-5" />
-                <h4>Декларация принципов портала</h4>
-              </div>
-              
-              <div className="flex items-start space-x-3">
-                <Checkbox 
-                  id="agree-church" 
-                  checked={agreements.church}
-                  onCheckedChange={(c) => setAgreements(prev => ({...prev, church: !!c}))}
-                />
-                <div className="grid gap-1.5 leading-none">
-                  <label htmlFor="agree-church" className="text-sm font-medium leading-none cursor-pointer">
-                    Церковная принадлежность и послушание священноначалию
-                  </label>
-                  <p className="text-xs text-muted-foreground">
-                    Проект реализуется/учрежден религиозной организацией или действует по письменному благословению архиерея, и поддерживает конструктивные рабочие отношения с епархиальным управлением.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <Checkbox 
-                  id="agree-finance" 
-                  checked={agreements.finance}
-                  onCheckedChange={(c) => setAgreements(prev => ({...prev, finance: !!c}))}
-                />
-                <div className="grid gap-1.5 leading-none">
-                  <label htmlFor="agree-finance" className="text-sm font-medium leading-none cursor-pointer">
-                    Доверие жертвователей
-                  </label>
-                  <p className="text-xs text-muted-foreground">
-                    Сбор пожертвований на личные банковские карты физических лиц не ведется. Использование расчётного счета юридического лица или официальных ящиков.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <Checkbox 
-                  id="agree-active" 
-                  checked={agreements.active}
-                  onCheckedChange={(c) => setAgreements(prev => ({...prev, active: !!c}))}
-                />
-                <div className="grid gap-1.5 leading-none">
-                  <label htmlFor="agree-active" className="text-sm font-medium leading-none cursor-pointer">
-                    Опыт, устойчивость и реальная деятельность («Живой проект»)
-                  </label>
-                  <p className="text-xs text-muted-foreground">
-                    Деятельность проекта юридически закреплена уставными документами. Срок непрерывной работы не менее 3 месяцев, регулярные мероприятия или оказание адресной помощи — не менее раза в месяц.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <Checkbox 
-                  id="agree-media" 
-                  checked={agreements.media}
-                  onCheckedChange={(c) => setAgreements(prev => ({...prev, media: !!c}))}
-                />
-                <div className="grid gap-1.5 leading-none">
-                  <label htmlFor="agree-media" className="text-sm font-medium leading-none cursor-pointer">
-                    Открытая информационная политика
-                  </label>
-                  <p className="text-xs text-muted-foreground">Проект рассказывает о своей деятельности обществу: наличие действующего сайта или страниц в социальных сетях с регулярными обновлениями. </p>
-                </div>
-              </div>
-            </div>
-
-            <Button type="submit" size="lg" className="w-full" disabled={!canSubmit}>
+            <Button type="submit" size="lg" className="w-full">
               Отправить заявку на проверку
             </Button>
           </form>
