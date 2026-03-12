@@ -52,9 +52,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             }`}>
               Добавить проект
             </Link>
-            <Button variant="default" size="sm" className="ml-2 rounded-full font-medium shrink-0 whitespace-nowrap" asChild>
-              <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь</Link>
-            </Button>
           </nav>
 
           {/* Mobile Nav */}
@@ -86,9 +83,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <div className="mt-4 pt-4 border-t border-border flex flex-col gap-2">
                     <Button className="w-full justify-start rounded-full" variant="outline" asChild>
                       <Link href="/projects"><Search className="w-4 h-4 mr-2" /> Найти проект</Link>
-                    </Button>
-                    <Button className="w-full justify-start rounded-full" variant="default" asChild>
-                      <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь</Link>
                     </Button>
                   </div>
                 </nav>
@@ -124,6 +118,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <li><Link href="/projects" className="hover:text-secondary transition-colors">Каталог проектов</Link></li>
                 <li><Link href="/news" className="hover:text-secondary transition-colors">Новости служения</Link></li>
               </ul>
+            </div>
+
+            <div>
+              <h3 className="font-serif font-semibold text-white mb-4">Поддержка</h3>
+              <Button variant="default" size="sm" className="w-full sm:w-auto rounded-full font-medium shadow-lg hover:shadow-xl transition-all" asChild>
+                <Link href="/donate"><Heart className="w-4 h-4 mr-2" /> Помочь порталу</Link>
+              </Button>
             </div>
 
             <div>
