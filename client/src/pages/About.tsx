@@ -27,7 +27,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
       {/* Stats/Metrics Section */}
       <section className="py-16 bg-white border-y border-slate-100">
         <div className="container mx-auto px-4 max-w-5xl">
@@ -51,7 +50,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
       {/* Mission & Goals */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
@@ -95,7 +93,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
       {/* Principles Section */}
       <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -142,9 +139,7 @@ export default function About() {
                 <Users className="w-6 h-6 text-primary" />
                 <h3 className="font-bold text-lg">Открытая информационная политика</h3>
               </div>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Проект рассказывает о своей деятельности обществу: имеет действующий сайт или страницы в социальных сетях с регулярностью обновлений не менее одной публикации в неделю.
-              </p>
+              <p className="text-slate-600 text-sm leading-relaxed">Проект рассказывает о своей деятельности обществу: наличие действующего сайта или страниц в социальных сетях с регулярными обновлениями.</p>
             </div>
           </div>
           
@@ -155,7 +150,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
       {/* History of service */}
       <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4 max-w-5xl">
@@ -170,7 +164,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
       {/* About Synodal Department */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-5xl">
@@ -199,7 +192,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

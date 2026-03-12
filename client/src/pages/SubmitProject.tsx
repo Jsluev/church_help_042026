@@ -1,29 +1,18 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { ArrowLeft, CheckCircle2, ShieldAlert } from "lucide-react";
+import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 
 export default function SubmitProject() {
   const [submitted, setSubmitted] = useState(false);
-  const [agreements, setAgreements] = useState({
-    church: false,
-    finance: false,
-    active: false,
-    media: false
-  });
-
-  const canSubmit = Object.values(agreements).every(Boolean);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (canSubmit) {
-      setSubmitted(true);
-    }
+    setSubmitted(true);
   };
 
   if (submitted) {
