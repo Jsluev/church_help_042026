@@ -31,8 +31,76 @@ export default function About() {
         </div>
       </section>
 
+      {/* Stats/Metrics Section */}
+      <section className="py-16 bg-white border-y border-slate-100">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-4xl font-serif font-bold text-primary mb-2">4500+</div>
+              <div className="text-sm text-slate-500 font-medium">Церковных социальных инициатив</div>
+            </div>
+            <div>
+              <div className="text-4xl font-serif font-bold text-primary mb-2">80+</div>
+              <div className="text-sm text-slate-500 font-medium">Приютов для беременных и мам с детьми</div>
+            </div>
+            <div>
+              <div className="text-4xl font-serif font-bold text-primary mb-2">90+</div>
+              <div className="text-sm text-slate-500 font-medium">Приютов для бездомных</div>
+            </div>
+            <div>
+              <div className="text-4xl font-serif font-bold text-primary mb-2">400+</div>
+              <div className="text-sm text-slate-500 font-medium">Проектов помощи инвалидам</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Goals */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-3xl font-serif font-bold mb-6">Наша миссия</h2>
+              <p className="text-lg text-slate-600 leading-relaxed mb-6">
+                Мы стремимся объединить всех, кто нуждается в помощи, с теми, кто готов ее оказать. Платформа делает церковную социальную работу прозрачной, доступной и понятной для каждого человека.
+              </p>
+              <ul className="space-y-4 mt-8">
+                <li className="flex items-start">
+                  <Target className="w-6 h-6 text-primary mr-3 shrink-0" />
+                  <span className="text-slate-700 font-medium">Целевая и адресная помощь нуждающимся</span>
+                </li>
+                <li className="flex items-start">
+                  <Users className="w-6 h-6 text-primary mr-3 shrink-0" />
+                  <span className="text-slate-700 font-medium">Сообщество неравнодушных людей</span>
+                </li>
+              </ul>
+            </div>
+            <div className="relative">
+              <div className="aspect-square bg-slate-100 rounded-3xl overflow-hidden relative shadow-lg">
+                <img 
+                  src="/images/ortho_9.png" 
+                  alt="Красивый пейзаж с храмом" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 hidden md:block">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                    <Heart className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-slate-900">Помогаем вместе</div>
+                    <div className="text-sm text-slate-500">Присоединяйтесь к нам</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Principles Section */}
-      <section id="principles" className="py-20 bg-white border-b border-slate-100 scroll-mt-20">
+      <section id="principles" className="py-20 bg-white border-y border-slate-100 scroll-mt-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-serif font-bold mb-4">Декларация принципов</h2>
